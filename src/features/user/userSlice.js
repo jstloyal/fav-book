@@ -24,6 +24,27 @@ export const login = createAsyncThunk(
   }
 );
 
+export const signUp = createAsyncThunk(
+  'user/signUp',
+  async (data, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(base_url, data);
+      const {
+        data: { data: user },
+        headers,
+      } = response;
+      const header = {
+        'access-token': headers['access-token'],
+        client: headers.client,
+        uid: headers.uid,
+      };
+      return { user, header };
+    } catch (error) {
+      return rejectWithValue(error.response.data.errors.full_messages);
+    }
+  }
+);
+
 export const userSlice = createSlice({
   name: 'user',
   initialState: {
@@ -59,6 +80,21 @@ export const userSlice = createSlice({
       state.errors.login = action.payload.errors;
       state.loaders.login = false;
     },
+    [signUp.pending]: state => {
+      state.loaders.signUp = true;
+      state.errors.signUp = false;
+    },
+    [signUp.fulfilled]: (state, action) => {
+      state.user = action.payload.user;
+      state.headers = action.payload.header;
+      state.loggedIn = true;
+      state.loaders.signUp = false;
+      state.errors.signUp = false;
+    },
+    [signUp.rejected]: (state, action) => {
+      state.error.signUp = action.payload;
+      state.loaders.signUp = false;
+    }
   },
 });
 
