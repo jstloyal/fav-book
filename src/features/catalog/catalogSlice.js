@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const getBooks = createAsyncThunk('catalog/getBooks', async () => {
   const response = await axios.get(
-    'https://favbooks-api.herokuapp.com/books'
+    'https://favbooks-api.herokuapp.com/books',
   );
   return response.data;
 });
@@ -17,7 +17,7 @@ export const catalogSlice = createSlice({
     filters: {},
   },
   reducers: {
-    decrement: (state) => {
+    decrement: state => {
       state.value -= 1;
     },
     incrementByAmount: (state, action) => {

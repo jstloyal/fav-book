@@ -16,7 +16,7 @@ export const userSlice = createSlice({
     loggedIn: false,
   },
   reducers: {
-    decrement: (state) => {
+    decrement: state => {
       state.value -= 1;
     },
     incrementByAmount: (state, action) => {
