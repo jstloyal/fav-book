@@ -6,7 +6,6 @@ const LoginForm = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = (data) => {
-    console.log('data: >> ', data);
     dispatch(login(data));
   };
 

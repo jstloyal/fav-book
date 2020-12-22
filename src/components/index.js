@@ -14,6 +14,9 @@ const Main = () => {
       <Route exact path="/" component={Home} />
       <Route exact path="/books/:id" component={Book} />
       <Route exact path="/books" component={Books} />
+      <Route exact path="/dashboard">
+        {loggedIn ? <Dashboard /> : <Redirect to="/login" />}
+      </Route>
       <Route exact path="/login" component={Login}>
         {loggedIn ? <Redirect to="/" /> : <Login />}
       </Route>
