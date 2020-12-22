@@ -34,8 +34,10 @@ export const userSlice = createSlice({
     loggedIn: false,
   },
   reducers: {
-    decrement: state => {
-      state.value -= 1;
+    logout: state => {
+      state.user = {};
+      state.headers = {};
+      state.loggedIn = false;
     },
     incrementByAmount: (state, action) => {
       state.value += action.payload;
@@ -61,6 +63,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { decrement, incrementByAmount } = userSlice.actions;
+export const { logout, incrementByAmount } = userSlice.actions;
 export const selectCount = (state) => state.counter.value;
 export default userSlice.reducer;
