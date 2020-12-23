@@ -1,13 +1,14 @@
+/* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const base_url = 'https://favbooks-api.herokuapp.com/api/v1/auth';
+const baseUrl = 'https://favbooks-api.herokuapp.com/api/v1/auth';
 
 export const login = createAsyncThunk(
   'user/login',
   async (data, { rejectWithValue }) => {
     try {
-      const response = await axios.post(`${base_url}/sign_in`, data);
+      const response = await axios.post(`${baseUrl}/sign_in`, data);
       const {
         data: { data: user },
         headers,
@@ -21,14 +22,14 @@ export const login = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
-  }
+  },
 );
 
 export const signUp = createAsyncThunk(
   'user/signUp',
   async (data, { rejectWithValue }) => {
     try {
-      const response = await axios.post(base_url, data);
+      const response = await axios.post(baseUrl, data);
       const {
         data: { data: user },
         headers,
@@ -42,7 +43,7 @@ export const signUp = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.response.data.errors.full_messages);
     }
-  }
+  },
 );
 
 export const userSlice = createSlice({
@@ -65,7 +66,7 @@ export const userSlice = createSlice({
     },
   },
   extraReducers: {
-    [login.pending]: (state) => {
+    [login.pending]: state => {
       state.loaders.login = true;
       state.errors.login = false;
     },
@@ -94,10 +95,10 @@ export const userSlice = createSlice({
     [signUp.rejected]: (state, action) => {
       state.error.signUp = action.payload;
       state.loaders.signUp = false;
-    }
+    },
   },
 });
 
 export const { logout, incrementByAmount } = userSlice.actions;
-export const selectCount = (state) => state.counter.value;
+export const selectCount = state => state.counter.value;
 export default userSlice.reducer;

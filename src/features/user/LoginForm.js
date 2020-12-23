@@ -5,8 +5,13 @@ import Error from '../../components/Error';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-  const { register, handleSubmit, errors, reset } = useForm();
-  const onSubmit = (data) => {
+  const {
+    register,
+    handleSubmit,
+    errors,
+    reset,
+  } = useForm();
+  const onSubmit = data => {
     dispatch(login(data));
     reset(data);
   };
@@ -17,7 +22,7 @@ const LoginForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
       <div>
-        <input 
+        <input
           name="email"
           placeholder="Email"
           ref={register({
@@ -38,7 +43,7 @@ const LoginForm = () => {
         <p>{errors.email && errors.email.message}</p>
       </div>
       <div>
-        <input 
+        <input
           type="password"
           name="password"
           placeholder="Password"

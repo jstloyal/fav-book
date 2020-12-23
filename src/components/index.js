@@ -4,8 +4,9 @@ import Home from '../pages/Home';
 import Book from '../pages/Book';
 import Books from '../pages/Books';
 import Login from '../pages/Login';
-import SignUp from '../pages/Signup';
-import Nav from '../components/Nav';
+import SignUp from '../pages/SignUp';
+import Dashboard from '../pages/Dashboard';
+import Nav from './Nav';
 
 const Main = () => {
   const loggedIn = useSelector(state => state.user.loggedIn);

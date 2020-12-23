@@ -6,14 +6,14 @@ import { signUp } from './userSlice';
 const SignUpForm = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit, errors } = useForm();
-  const onSubmit = (data) => {
+  const onSubmit = data => {
     console.log('dispatching sign up');
     console.log('data :>> ', data);
     dispatch(signUp(data));
   };
 
-  const signUpLoader = useSelector((state) => state.user.loaders.signUp);
-  const signUpError = useSelector((state) => state.user.errors.signUp);
+  const signUpLoader = useSelector(state => state.user.loaders.signUp);
+  const signUpError = useSelector(state => state.user.errors.signUp);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

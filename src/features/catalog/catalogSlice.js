@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -27,7 +28,5 @@ export const catalogSlice = createSlice({
 });
 
 export const { document, incrementByAmount } = catalogSlice.actions;
-
-export const selectCount = (state) => state.counter.value;
-
+export const selectCount = state => state.counter.value;
 export default catalogSlice.reducer;
