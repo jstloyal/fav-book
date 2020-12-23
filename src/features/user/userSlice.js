@@ -18,6 +18,7 @@ export const login = createAsyncThunk(
         client: headers.client,
         uid: headers.uid,
       };
+      localStorage.setItem('currentUser', JSON.stringify({ user, header }));
       return { user, header };
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -39,6 +40,7 @@ export const signUp = createAsyncThunk(
         client: headers.client,
         uid: headers.uid,
       };
+      localStorage.setItem('currentUser', JSON.stringify({ user, header }));
       return { user, header };
     } catch (error) {
       return rejectWithValue(error.response.data.errors.full_messages);
@@ -61,8 +63,10 @@ export const userSlice = createSlice({
       state.headers = {};
       state.loggedIn = false;
     },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload;
+    loginFromStorage: (state, action) => {
+      state.user = action.payload.user;
+      state.headers = action.payload.header;
+      state.loggedIn = true;
     },
   },
   extraReducers: {
@@ -99,6 +103,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { logout, incrementByAmount } = userSlice.actions;
+export const { logout, loginFromStorage } = userSlice.actions;
 export const selectCount = state => state.counter.value;
 export default userSlice.reducer;

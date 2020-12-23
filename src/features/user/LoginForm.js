@@ -16,7 +16,7 @@ const LoginForm = () => {
     reset(data);
   };
 
-  const loginLoader = useSelector(state => state.user.loader.login);
+  const loginLoader = useSelector(state => state.user.loaders.login);
   const loginError = useSelector(state => state.user.errors.login);
 
   return (
