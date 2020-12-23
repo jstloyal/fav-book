@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import LoginForm from '../features/user/LoginForm';
 
 const Login = () => (
@@ -8,9 +9,7 @@ const Login = () => (
     </header>
     <LoginForm />
     <footer>
-      <a href="/" onClick={e => e.preventDefault()}>
-        Forgot Password?
-      </a>
+      <Link to="/sign_up">Sign up</Link>
     </footer>
   </main>
 );

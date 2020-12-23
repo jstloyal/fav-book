@@ -11,7 +11,7 @@ import Nav from './Nav';
 import { loginFromStorage } from '../features/user/userSlice';
 
 const Main = () => {
-  let loggedIn = useSelector(state => state.user.loggedIn);
+  const loggedIn = useSelector(state => state.user.loggedIn);
   const dispatch = useDispatch();
 
   useEffect(() => {

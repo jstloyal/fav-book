@@ -7,8 +7,6 @@ const SignUpForm = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => {
-    console.log('dispatching sign up');
-    console.log('data :>> ', data);
     dispatch(signUp(data));
   };
 
