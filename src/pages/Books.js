@@ -1,5 +1,10 @@
+import AllBooks from '../features/catalog/AllBooks';
+
 const Books = () => (
-  <div>Books</div>
+  <div>
+    <div>Books</div>
+    <AllBooks />
+  </div>
 );
 
 export default Books;

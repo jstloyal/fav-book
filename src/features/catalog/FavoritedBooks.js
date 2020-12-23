@@ -1,14 +1,7 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Book from './Book';
-import { getBooks } from './catalogSlice';
 
 const FavoritedBooks = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getBooks());
-  }, [dispatch]);
-
   const books = useSelector(state => state.catalog.books);
   const myBooks = [...books]
     .sort((bookA, bookB) => bookB.favorited_by.length - bookA.favorited_by.length)

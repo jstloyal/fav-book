@@ -2,13 +2,14 @@ import { useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Home from '../pages/Home';
-import Book from '../pages/Book';
+import BookDetails from '../pages/BookDetails';
 import Books from '../pages/Books';
 import Login from '../pages/Login';
 import SignUp from '../pages/SignUp';
 import Dashboard from '../pages/Dashboard';
 import Nav from './Nav';
 import { loginFromStorage } from '../features/user/userSlice';
+import { getBooks } from '../features/catalog/catalogSlice';
 
 const Main = () => {
   const loggedIn = useSelector(state => state.user.loggedIn);
@@ -24,12 +25,16 @@ const Main = () => {
     }
   }, [dispatch, loggedIn]);
 
+  useEffect(() => {
+    dispatch(getBooks());
+  }, [dispatch]);
+
   return (
     <>
       <Nav />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/books/:id" component={Book} />
+        <Route exact path="/books/:id" component={BookDetails} />
         <Route exact path="/books" component={Books} />
         <Route exact path="/dashboard">
           {loggedIn ? <Dashboard /> : <Redirect to="/login" />}

@@ -9,6 +9,11 @@ export const getBooks = createAsyncThunk('catalog/getBooks', async () => {
   return response.data;
 });
 
+export const getBook = createAsyncThunk('catalog/getBook', async id => {
+  const response = await axios.get(`${baseUrl}/${id}`);
+  return response.date;
+});
+
 export const catalogSlice = createSlice({
   name: 'catalog',
   initialState: {
@@ -16,6 +21,7 @@ export const catalogSlice = createSlice({
     loaders: {},
     errors: {},
     filters: {},
+    book: { user: {} },
   },
   reducers: {
     decrement: state => {
@@ -38,6 +44,19 @@ export const catalogSlice = createSlice({
     [getBooks.rejected]: (state, action) => {
       state.errors.loadingBooks = action.error.message;
       state.loaders.loadingBooks = false;
+    },
+    [getBook.pending]: state => {
+      state.loaders.loadingBook = true;
+      state.errors.loadingBook = false;
+    },
+    [getBook.fulfilled]: (state, action) => {
+      state.book = action.payload;
+      state.loaders.loadingBook = false;
+      state.errors.loadingBook = false;
+    },
+    [getBook.rejected]: (state, action) => {
+      state.errors.loadingBook = action.error.message;
+      state.loaders.loadingBook = false;
     },
   },
 });

@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const Book = ({ book }) => {
   const {
-    title, description, author, genre, ratings, user,
+    id, title, description, author, genre, ratings, user,
   } = book;
 
   return (
@@ -16,6 +17,9 @@ const Book = ({ book }) => {
         <li>
           By:
           {user.name}
+        </li>
+        <li>
+          <Link to={`/books/${id}`}>More details</Link>
         </li>
       </ul>
     </div>
