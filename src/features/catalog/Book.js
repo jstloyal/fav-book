@@ -1,52 +1,32 @@
-import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { formatDate } from '../../utils/date';
-import { deleteBook } from './catalogSlice';
 import PropTypes from 'prop-types';
+import FavoriteButton from './FavoriteButton';
+import DeleteButton from './DeleteButton';
 
 
 const Book = ({ book }) => {
-  const currentUser = useSelector(state => state.user.user);
-  const headers = useSelector(state => state.user.headers);
-  const loading = useSelector(state => state.catalog.loaders.deleteBook);
-  const error = useSelector(state => state.catalog.errors.deleteBook);
-
   const {
     id,
     title,
     description,
     author,
     genre,
+    favorite_by: favoritedBy,
     created_at: createdAt,
     updated_at: updatedAt,
+    user: creator,
     ratings,
     user,
   } = book;
 
-  const dispatch = useDispatch();
-  const handleDelete = e => {
-    e.preventDefault();
-    dispatch(deleteBook({ id, headers }));
-  };
-
   const createdDate = formatDate(createdAt);
   const updatedDate  = formatDate(updatedAt);
-
+  
   return (
     <div>
-      {error ? <p>{error}</p> : null}
-      {currentUser.id === user.id ? (
-        <div>
-          <button
-            type="button"
-            onClick={handleDelete}
-            disabled={loading && loading === id}
-          >
-            X
-          </button>
-          {/* <button type="button">Edit</button> */}
-        </div>
-      ) : null}
+      <DeleteButton id={id} creator={creator} />
+      <FavoriteButton id={id} favoritedBy={favoritedBy} />
       <ul>
         <li>{title}</li>
         <li>{description}</li>
@@ -55,8 +35,9 @@ const Book = ({ book }) => {
         {ratings ? <li>{ratings.join('-')}</li> : null}
         <li>
           By:
-          {user.name}
+          {creator.name}
         </li>
+        <li>Likes ({favoritedBy.length})</li>
         {updatedDate !== createdDate ? <li>Updated {updatedDate}</li> : null}
         <li>Added {createdDate}</li>
         <li>

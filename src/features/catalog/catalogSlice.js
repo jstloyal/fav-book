@@ -34,6 +34,14 @@ export const deleteBook = createAsyncThunk(
   },
 );
 
+export const favorite = createAsyncThunk(
+  'catalog/favorite',
+  async ({ id, type, currentUser, headers }) => {
+    await axios.put(`${baseUrl}/${id}/favorite`, { type }, { headers });
+    return { id, type, currentUser };
+  },
+);
+
 export const catalogSlice = createSlice({
   name: 'catalog',
   initialState: {
@@ -41,7 +49,7 @@ export const catalogSlice = createSlice({
     loaders: {},
     errors: {},
     filters: {},
-    book: { user: {} },
+    book: { user: {}, favorited_by: [] },
   },
   reducers: {
     decrement: state => {
@@ -58,7 +66,7 @@ export const catalogSlice = createSlice({
     },
     [getBooks.fulfilled]: (state, action) => {
       state.books = action.payload.sort(
-        (a, b) => new Date(b.updated_at) - new Date(a.updated_at)
+        (a, b) => new Date(b.created_at) - new Date(a.created_at)
       );
       state.loaders.loadingBooks = false;
       state.errors.loadingBooks = false;
@@ -101,12 +109,38 @@ export const catalogSlice = createSlice({
       state.books = state.books.filter(
         book => book.id !== action.payload.id
       );
+      state.book = {user: {}, favorited_by: []};
       state.loaders.deleteBook = false;
       state.errors.deleteBook = false;
     },
     [deleteBook.rejected]: (state, action) => {
       state.errors.deleteBook = action.payload;
       state.loaders.deleteBook = false;
+    },
+    [favorite.pending]: (state, action) => {
+      state.loaders.favorite = action.meta.arg.id;
+      state.errors.favorite = false;
+    },
+    [favorite.fulfilled]: (state, action) => {
+      const { id, type, currentUser } = action.payload;
+      state.books.map((book) => {
+        if (book.id === id) {
+          type === 'favorite'
+            ? book.favorited_by.push(currentUser)
+            : (book.favorited_by = book.favorited_by.filter(
+                (favorite) => favorite.id !== currentUser.id
+              ));
+          state.book = book;
+          return book;
+        }
+        return book;
+      });
+      state.loaders.favorite = false;
+      state.errors.favorite = false;
+    },
+    [favorite.rejected]: (state, action) => {
+      state.errors.favorite = action.error.message;
+      state.loaders.favorite = false;
     },
   },
 });
