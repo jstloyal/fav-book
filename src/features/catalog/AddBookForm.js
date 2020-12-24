@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import Error from '../../components/Error';
 import Loading from '../../components/Loading';
-import { addBook, getBooks } from './catalogSlice';
+import { addBook } from './catalogSlice';
 
 const AddBookForm = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,6 @@ const AddBookForm = () => {
 
   const onSubmit = data => {
     dispatch(addBook({ data, headers }));
-    dispatch(getBooks());
   };
 
   return (
@@ -26,10 +25,10 @@ const AddBookForm = () => {
             name="title"
             placeholder="Title"
             ref={register({
-              // required: {
-              //   value: true,
-              //   message: 'This field is mandatory',
-              // },
+              required: {
+                value: true,
+                message: 'This field is mandatory',
+              },
               minLength: {
                 value: 3,
                 message: 'Minimum of 3 characters',

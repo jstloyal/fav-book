@@ -26,6 +26,14 @@ export const addBook = createAsyncThunk(
   },
 );
 
+export const deleteBook = createAsyncThunk(
+  'catalog/deleteBook',
+  async ({ id, headers }) => {
+    const response = await axios.delete(`${baseUrl}/${id}`, { headers });
+    return response.data;
+  },
+);
+
 export const catalogSlice = createSlice({
   name: 'catalog',
   initialState: {
@@ -61,7 +69,8 @@ export const catalogSlice = createSlice({
       state.loaders.loadingBook = true;
       state.errors.loadingBook = false;
     },
-    [getBook.fulfilled]: state => {
+    [getBook.fulfilled]: (state, action) => {
+      state.book = action.payload;
       state.loaders.loadingBook = false;
       state.errors.loadingBook = false;
     },
@@ -82,9 +91,23 @@ export const catalogSlice = createSlice({
       state.errors.addBook = action.payload;
       state.loaders.addBook = false;
     },
+    [deleteBook.pending]: (state, action) => {
+      state.loaders.deleteBook = action.meta.arg.id;
+      state.errors.deleteBook = false;
+    },
+    [deleteBook.fulfilled]: (state, actio) => {
+      state.books = state.books.filter(
+        book => book.id !== action.payload.id
+      );
+      state.loaders.deleteBook = false;
+      state.errors.deleteBook = false;
+    },
+    [deleteBook.rejected]: (state, action) => {
+      state.errors.deleteBook = action.payload;
+      state.loaders.deleteBook = false;
+    },
   },
 });
 
 export const { decrement, incrementByAmount } = catalogSlice.actions;
-// export const selectCount = state => state.counter.value;
 export default catalogSlice.reducer;
