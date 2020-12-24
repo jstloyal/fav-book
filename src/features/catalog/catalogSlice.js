@@ -16,10 +16,14 @@ export const getBook = createAsyncThunk('catalog/getBook', async id => {
 
 export const addBook = createAsyncThunk(
   'catalog/getBook',
-  async ({ data, headers }) => {
-    const response = await axios.post(baseUrl, data, { headers });
-    return response.data;
-  }
+  async ({ data, headers }, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(baseUrl, data, { headers });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  },
 );
 
 export const catalogSlice = createSlice({
@@ -57,8 +61,7 @@ export const catalogSlice = createSlice({
       state.loaders.loadingBook = true;
       state.errors.loadingBook = false;
     },
-    [getBook.fulfilled]: (state, action) => {
-      state.book = action.payload;
+    [getBook.fulfilled]: state => {
       state.loaders.loadingBook = false;
       state.errors.loadingBook = false;
     },
@@ -66,9 +69,22 @@ export const catalogSlice = createSlice({
       state.errors.loadingBook = action.error.message;
       state.loaders.loadingBook = false;
     },
+    [addBook.pending]: state => {
+      state.loaders.addBook = true;
+      state.errors.addBook = false;
+    },
+    [addBook.fulfilled]: (state, action) => {
+      state.books.push(action.payload);
+      state.loaders.addBook = false;
+      state.errors.addBook = false;
+    },
+    [addBook.rejected]: (state, action) => {
+      state.errors.addBook = action.payload;
+      state.loaders.addBook = false;
+    },
   },
 });
 
 export const { decrement, incrementByAmount } = catalogSlice.actions;
-export const selectCount = state => state.counter.value;
+// export const selectCount = state => state.counter.value;
 export default catalogSlice.reducer;
