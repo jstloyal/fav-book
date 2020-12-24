@@ -1,5 +1,10 @@
+import AddBookForm from '../features/catalog/AddBokForm';
+
 const Dashboard = () => (
-  <div>Dashboard</div>
+  <div>
+    <h1>Dashboard</h1>
+    <AddBookForm />
+  </div>
 );
 
 export default Dashboard;

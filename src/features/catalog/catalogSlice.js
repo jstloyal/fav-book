@@ -14,6 +14,14 @@ export const getBook = createAsyncThunk('catalog/getBook', async id => {
   return response.date;
 });
 
+export const addBook = createAsyncThunk(
+  'catalog/getBook',
+  async ({ data, headers }) => {
+    const response = await axios.post(baseUrl, data, { headers });
+    return response.data;
+  }
+);
+
 export const catalogSlice = createSlice({
   name: 'catalog',
   initialState: {
