@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { formatDate } from '../../utils/date';
 import { deleteBook } from './catalogSlice';
 import PropTypes from 'prop-types';
 
@@ -11,7 +12,15 @@ const Book = ({ book }) => {
   const error = useSelector(state => state.catalog.errors.deleteBook);
 
   const {
-    id, title, description, author, genre, ratings, user,
+    id,
+    title,
+    description,
+    author,
+    genre,
+    created_at: createdAt,
+    updated_at: updatedAt,
+    ratings,
+    user,
   } = book;
 
   const dispatch = useDispatch();
@@ -19,6 +28,9 @@ const Book = ({ book }) => {
     e.preventDefault();
     dispatch(deleteBook({ id, headers }));
   };
+
+  const createdDate = formatDate(createdAt);
+  const updatedDate  = formatDate(updatedAt);
 
   return (
     <div>
@@ -32,7 +44,7 @@ const Book = ({ book }) => {
           >
             X
           </button>
-          <button type="button">Edit</button>
+          {/* <button type="button">Edit</button> */}
         </div>
       ) : null}
       <ul>
@@ -45,6 +57,8 @@ const Book = ({ book }) => {
           By:
           {user.name}
         </li>
+        {updatedDate !== createdDate ? <li>Updated {updatedDate}</li> : null}
+        <li>Added {createdDate}</li>
         <li>
           <Link to={`/books/${id}`}>More details</Link>
         </li>

@@ -57,7 +57,9 @@ export const catalogSlice = createSlice({
       state.errors.loadingBooks = false;
     },
     [getBooks.fulfilled]: (state, action) => {
-      state.books = action.payload;
+      state.books = action.payload.sort(
+        (a, b) => new Date(b.updated_at) - new Date(a.updated_at)
+      );
       state.loaders.loadingBooks = false;
       state.errors.loadingBooks = false;
     },
