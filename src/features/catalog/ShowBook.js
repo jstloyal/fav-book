@@ -8,6 +8,7 @@ import Error from '../../components/Error';
 import { formatData } from '../../utils/date';
 
 const ShowBook = ({ id }) => {
+  const currentUser = useSelector(state => state.user.user);
   const book = useSelector(state => state.catalog.book);
   const loading = useSelector(state => state.catalog.loaders.loadingBook);
   const error = useSelector(state => state.catalog.errors.loadingBook);
@@ -37,7 +38,9 @@ const ShowBook = ({ id }) => {
     <Error errors={[error]} />
   ) : (
     <div>
-      <FavoriteButton id={+id} favoritedBy={favoritedBy} />
+      {currentUser.id ? (
+        <FavoriteButton id={+id} favoritedBy={favoritedBy} />
+      ) : null}
       <ul>
         <li>{title}</li>
         <li>{description}</li>

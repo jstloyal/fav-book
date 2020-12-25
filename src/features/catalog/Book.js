@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import { formatDate } from '../../utils/date';
 import FavoriteButton from './FavoriteButton';
 import DeleteButton from './DeleteButton';
 
 const Book = ({ book }) => {
+  const currentUser = useSelector(state => state.user.user);
   const {
     id,
     title,
@@ -24,7 +26,9 @@ const Book = ({ book }) => {
   return (
     <div>
       <DeleteButton id={id} creator={creator} />
-      <FavoriteButton id={id} favoritedBy={favoritedBy} />
+      {currentUser.id ? (
+        <FavoriteButton id={+id} favoritedBy={favoritedBy} />
+      ) : null}
       <ul>
         <li>{title}</li>
         <li>{description}</li>
