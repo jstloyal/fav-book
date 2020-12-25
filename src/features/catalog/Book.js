@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
-import { formatDate } from '../../utils/date';
 import PropTypes from 'prop-types';
+import { formatDate } from '../../utils/date';
 import FavoriteButton from './FavoriteButton';
 import DeleteButton from './DeleteButton';
-
 
 const Book = ({ book }) => {
   const {
@@ -17,12 +16,11 @@ const Book = ({ book }) => {
     updated_at: updatedAt,
     user: creator,
     ratings,
-    user,
   } = book;
 
   const createdDate = formatDate(createdAt);
-  const updatedDate  = formatDate(updatedAt);
-  
+  const updatedDate = formatDate(updatedAt);
+
   return (
     <div>
       <DeleteButton id={id} creator={creator} />
@@ -37,7 +35,12 @@ const Book = ({ book }) => {
           By:
           {creator.name}
         </li>
-        <li>Likes ({favoritedBy.length})</li>
+        <li>
+          Likes
+          (
+          {favoritedBy.length}
+          )
+        </li>
         {updatedDate !== createdDate ? <li>Updated {updatedDate}</li> : null}
         <li>Added {createdDate}</li>
         <li>

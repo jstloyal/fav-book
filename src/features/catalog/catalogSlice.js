@@ -36,7 +36,9 @@ export const deleteBook = createAsyncThunk(
 
 export const favorite = createAsyncThunk(
   'catalog/favorite',
-  async ({ id, type, currentUser, headers }) => {
+  async ({
+    id, type, currentUser, headers,
+  }) => {
     await axios.put(`${baseUrl}/${id}/favorite`, { type }, { headers });
     return { id, type, currentUser };
   },
@@ -66,7 +68,7 @@ export const catalogSlice = createSlice({
     },
     [getBooks.fulfilled]: (state, action) => {
       state.books = action.payload.sort(
-        (a, b) => new Date(b.created_at) - new Date(a.created_at)
+        (a, b) => new Date(b.created_at) - new Date(a.created_at),
       );
       state.loaders.loadingBooks = false;
       state.errors.loadingBooks = false;
@@ -94,6 +96,9 @@ export const catalogSlice = createSlice({
     },
     [addBook.fulfilled]: (state, action) => {
       state.books.push(action.payload);
+      state.books.sort(
+        (a, b) => new Date(b.created_at) - new Date(a.created_at),
+      );
       state.loaders.addBook = false;
       state.errors.addBook = false;
     },
@@ -105,11 +110,11 @@ export const catalogSlice = createSlice({
       state.loaders.deleteBook = action.meta.arg.id;
       state.errors.deleteBook = false;
     },
-    [deleteBook.fulfilled]: (state, actio) => {
+    [deleteBook.fulfilled]: (state, action) => {
       state.books = state.books.filter(
-        book => book.id !== action.payload.id
+        book => book.id !== action.payload.id,
       );
-      state.book = {user: {}, favorited_by: []};
+      state.book = { user: {}, favorited_by: [] };
       state.loaders.deleteBook = false;
       state.errors.deleteBook = false;
     },
@@ -123,7 +128,7 @@ export const catalogSlice = createSlice({
     },
     [favorite.fulfilled]: (state, action) => {
       const { id, type, currentUser } = action.payload;
-      state.books.map((book) => {
+      state.books.map(book => {
         if (book.id === id) {
           type === 'favorite'
             ? book.favorited_by.push(currentUser)

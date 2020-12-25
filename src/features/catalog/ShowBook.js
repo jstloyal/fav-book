@@ -6,14 +6,12 @@ import { getBook } from './catalogSlice';
 import Loading from '../../components/Loading';
 import Error from '../../components/Error';
 import { formatData } from '../../utils/date';
-import { getBook } from './catalogSlice';
 
 const ShowBook = ({ id }) => {
-  const product = useSelector((state) => state.catalog.product);
-  const loading = useSelector((state) => state.catalog.loaders.loadingProduct);
-  const error = useSelector((state) => state.catalog.errors.loadingProduct);
+  const book = useSelector(state => state.catalog.book);
+  const loading = useSelector(state => state.catalog.loaders.loadingBook);
+  const error = useSelector(state => state.catalog.errors.loadingBook);
   const {
-    id,
     title,
     description,
     author,
@@ -23,13 +21,15 @@ const ShowBook = ({ id }) => {
     updated_at: updatedAt,
     user: creator,
     ratings,
-    user,
   } = book;
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getBook(id));
   }, [dispatch, id]);
+
+  const createdDate = formatDate(createdAt);
+  const updatedDate = formatDate(updatedAt);
 
   return loading ? (
     <Loading />

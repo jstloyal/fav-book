@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import Book from './Book';
 
-const FavoritedBooks = () => {
+const UserBooks = () => {
   const books = useSelector(state =>  state.catalog.books);
   const currentUser = useSelector(state => state.user.user);
   const myBooks = [...books]
@@ -17,4 +17,4 @@ const FavoritedBooks = () => {
   );
 };
 
-export default FavoritedBooks;
+export default UserBooks;
