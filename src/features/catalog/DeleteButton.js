@@ -4,7 +4,6 @@ import { deleteBook } from './catalogSlice';
 
 const DeleteButton = ({ id, userId }) => {
   const currentUser = useSelector(state => state.user.user);
-  const headers = useSelector(state => state.user.headers);
   const deleteLoading = useSelector(
     state => state.catalog.loaders.deleteBook,
   );
@@ -15,7 +14,7 @@ const DeleteButton = ({ id, userId }) => {
   const dispatch = useDispatch();
   const handleDelete = e => {
     e.preventDefault();
-    dispatch(deleteBook({ id, headers }));
+    dispatch(deleteBook(id));
   };
 
   return (

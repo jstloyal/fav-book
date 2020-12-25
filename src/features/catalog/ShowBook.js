@@ -17,11 +17,10 @@ const ShowBook = ({ id }) => {
     description,
     author,
     genre,
-    image,
+    image_url: imageUrl,
     favorite_by: favoritedBy,
     created_at: createdAt,
     updated_at: updatedAt,
-    user_id: userId,
     user_name: userName,
     ratings,
   } = book;
@@ -44,6 +43,9 @@ const ShowBook = ({ id }) => {
         <FavoriteButton id={+id} favoritedBy={favoritedBy} />
       ) : null}
       <ul>
+        <li>
+          <img src={imageUrl} alt="Book" />
+        </li>
         <li>{title}</li>
         <li>{description}</li>
         <li>{author}</li>

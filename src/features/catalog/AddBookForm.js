@@ -1,15 +1,16 @@
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import Error from '../../components/Error';
-import Loading from '../../components/Loading';
+// import Loading from '../../components/Loading';
 import { addBook } from './catalogSlice';
 
 const AddBookForm = () => {
+  const user = useSelector(state => state.user.user);
+  const loading = useSelector(state => state.catalog.loaders.addBook);
+  const error = useSelector(state => state.catalog.errors.addBook);
+  
   const dispatch = useDispatch();
   const { register, handleSubmit, reset, errors } = useForm();
-  const user = useSelector(state => state.user.user);
-  const headers = useSelector(state => state.user.headers);
-  const error = useSelector(state => state.catalog.errors.addBook);
 
   const onSubmit = data => {
     const formData = new FormData();
@@ -20,7 +21,7 @@ const AddBookForm = () => {
     formData.append('user_id', data.user_id);
     formData.append('image', data.image[0]);
 
-    dispatch(addBook({ formData, headers }));
+    dispatch(addBook(formData));
   };
 
   return (
@@ -137,7 +138,7 @@ const AddBookForm = () => {
             ref={register}
           />
         </div>
-        {Loading ? (
+        {loading ? (
           <button type="submit" disabled aria-disabled>
             Adding book...
           </button>
