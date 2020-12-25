@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteBook } from './catalogSlice';
 
-const DeleteButton = ({ id, creator }) => {
+const DeleteButton = ({ id, userId }) => {
   const currentUser = useSelector(state => state.user.user);
   const headers = useSelector(state => state.user.headers);
   const deleteLoading = useSelector(
@@ -21,7 +21,7 @@ const DeleteButton = ({ id, creator }) => {
   return (
     <>
       {deleteError ? <p>{deleteError}</p> : null}
-      {currentUser.id === creator.id ? (
+      {currentUser.id === userId ? (
         <div>
           <button
             type="button"
@@ -38,7 +38,7 @@ const DeleteButton = ({ id, creator }) => {
 
 DeleteButton.propTypes = {
   id: PropTypes.number.isRequired,
-  creator: PropTypes.objectOf(PropTypes.any).isRequired,
+  userId: PropTypes.number.isRequired,
 };
 
 export default DeleteButton;

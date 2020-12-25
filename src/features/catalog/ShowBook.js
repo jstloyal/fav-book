@@ -5,7 +5,7 @@ import FavoriteButton from './FavoriteButton';
 import { getBook } from './catalogSlice';
 import Loading from '../../components/Loading';
 import Error from '../../components/Error';
-import { formatData } from '../../utils/date';
+import { formatDate } from '../../utils/date';
 
 const ShowBook = ({ id }) => {
   const currentUser = useSelector(state => state.user.user);
@@ -17,10 +17,12 @@ const ShowBook = ({ id }) => {
     description,
     author,
     genre,
+    image,
     favorite_by: favoritedBy,
     created_at: createdAt,
     updated_at: updatedAt,
-    user: creator,
+    user_id: userId,
+    user_name: userName,
     ratings,
   } = book;
 
@@ -49,7 +51,7 @@ const ShowBook = ({ id }) => {
         {ratings ? <li>{ratings.join('-')}</li> : null}
         <li>
           By:
-          {creator.name}
+          {userName}
         </li>
         <li>Likes ({favoritedBy.length})</li>
         {updatedDate !== createdDate ? <li>Updated {updatedDate}</li> : null}

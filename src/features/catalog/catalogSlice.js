@@ -3,6 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const baseUrl = 'https://favbooks-api.herokuapp.com/books';
+// const baseUrl = 'http://localhost/books';
 
 export const getBooks = createAsyncThunk('catalog/getBooks', async () => {
   const response = await axios.get(baseUrl);
@@ -16,9 +17,9 @@ export const getBook = createAsyncThunk('catalog/getBook', async id => {
 
 export const addBook = createAsyncThunk(
   'catalog/getBook',
-  async ({ data, headers }, { rejectWithValue }) => {
+  async ({ formData, headers }, { rejectWithValue }) => {
     try {
-      const response = await axios.post(baseUrl, data, { headers });
+      const response = await axios.post(baseUrl, formData, { headers });
       return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
@@ -67,9 +68,7 @@ export const catalogSlice = createSlice({
       state.errors.loadingBooks = false;
     },
     [getBooks.fulfilled]: (state, action) => {
-      state.books = action.payload.sort(
-        (a, b) => new Date(b.created_at) - new Date(a.created_at),
-      );
+      state.books = action.payload;
       state.loaders.loadingBooks = false;
       state.errors.loadingBooks = false;
     },
@@ -95,10 +94,7 @@ export const catalogSlice = createSlice({
       state.errors.addBook = false;
     },
     [addBook.fulfilled]: (state, action) => {
-      state.books.push(action.payload);
-      state.books.sort(
-        (a, b) => new Date(b.created_at) - new Date(a.created_at),
-      );
+      state.books.unshift(action.payload);
       state.loaders.addBook = false;
       state.errors.addBook = false;
     },

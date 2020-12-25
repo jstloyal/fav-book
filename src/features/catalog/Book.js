@@ -16,7 +16,9 @@ const Book = ({ book }) => {
     favorite_by: favoritedBy,
     created_at: createdAt,
     updated_at: updatedAt,
-    user: creator,
+    user_id: userId,
+    user_name: userName,
+    image_url: imageUrl,
     ratings,
   } = book;
 
@@ -25,11 +27,14 @@ const Book = ({ book }) => {
 
   return (
     <div>
-      <DeleteButton id={id} creator={creator} />
+      <DeleteButton id={id} userId={userId} />
       {currentUser.id ? (
         <FavoriteButton id={+id} favoritedBy={favoritedBy} />
       ) : null}
       <ul>
+        <li>
+          <img src={imageUrl} alt="Book" />
+        </li>
         <li>{title}</li>
         <li>{description}</li>
         <li>{author}</li>
@@ -37,7 +42,7 @@ const Book = ({ book }) => {
         {ratings ? <li>{ratings.join('-')}</li> : null}
         <li>
           By:
-          {creator.name}
+          {userName}
         </li>
         <li>
           Likes

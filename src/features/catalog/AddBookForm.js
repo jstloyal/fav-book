@@ -6,14 +6,21 @@ import { addBook } from './catalogSlice';
 
 const AddBookForm = () => {
   const dispatch = useDispatch();
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, reset, errors } = useForm();
   const user = useSelector(state => state.user.user);
   const headers = useSelector(state => state.user.headers);
-  // const loading = useSelector(state => state.catalog.loaders.addBook);
   const error = useSelector(state => state.catalog.errors.addBook);
 
   const onSubmit = data => {
-    dispatch(addBook({ data, headers }));
+    const formData = new FormData();
+    formData.append('title', data.title);
+    formData.append('description', data.description);
+    formData.append('author', data.author);
+    formData.append('genre', data.genre);
+    formData.append('user_id', data.user_id);
+    formData.append('image', data.image[0]);
+
+    dispatch(addBook({ formData, headers }));
   };
 
   return (
@@ -105,6 +112,22 @@ const AddBookForm = () => {
             })}
           />
           <p>{errors.genre && errors.genre.message}</p>
+        </div>
+        <div>
+          <label htmlFor="image">
+            <input
+              type="file"
+              name="image"
+              accept="image/"
+              ref={register({
+                required: {
+                  value: true,
+                  message: 'This field us mandatory',
+                },
+              })}
+            />
+            <p>{errors.image && errors.image.message}</p>
+          </label>
         </div>
         <div>
           <input

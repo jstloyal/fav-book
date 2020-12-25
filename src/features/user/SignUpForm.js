@@ -14,7 +14,7 @@ const SignUpForm = () => {
   const signUpError = useSelector(state => state.user.errors.signUp);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} encType="multipart/formdata">
       <div>
         <input
           name="email"
