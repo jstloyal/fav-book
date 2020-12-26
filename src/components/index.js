@@ -8,7 +8,7 @@ import Books from '../pages/Books';
 import Login from '../pages/Login';
 import SignUp from '../pages/SignUp';
 import Dashboard from '../pages/Dashboard';
-import Nav from './Nav';
+import Navbar from './Navbar';
 import Error from './Error';
 import Flash from './Flash';
 import { loginFromStorage } from '../features/user/userSlice';
@@ -38,7 +38,7 @@ const Main = () => {
 
   return (
     <>
-      <Nav />
+      <Navbar />
       <Flash />
       {error ? (
         <Error errors={`${error}. Please contact administrator.`} />
