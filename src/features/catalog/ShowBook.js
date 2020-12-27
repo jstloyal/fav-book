@@ -55,7 +55,11 @@ const ShowBook = ({ id }) => {
           By:
           {userName}
         </li>
-        <li>Likes ({favoritedBy.length})</li>
+        <li>
+          Likes (
+          {favoritedBy.length}
+          )
+        </li>
         {updatedDate !== createdDate ? <li>Updated {updatedDate}</li> : null}
         <li>Added {createdDate}</li>
       </ul>

@@ -11,6 +11,7 @@ import Dashboard from '../pages/Dashboard';
 import Navbar from './Navbar';
 import Error from './Error';
 import Flash from './Flash';
+import Sidebar from './Sidebar';
 import { loginFromStorage } from '../features/user/userSlice';
 import { getBooks } from '../features/catalog/catalogSlice';
 
@@ -39,6 +40,7 @@ const Main = () => {
   return (
     <>
       <Navbar />
+      <Sidebar />
       <Flash />
       {error ? (
         <Error errors={`${error}. Please contact administrator.`} />

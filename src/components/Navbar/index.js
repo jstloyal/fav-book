@@ -1,58 +1,72 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { FaBars } from 'react-icons/fa';
+import { useSelector } from "react-redux";
+import { FaBars, FaSearch } from "react-icons/fa";
+import { logout } from '../../features/user/userSlice';
 import {
   Nav,
   NavContainer,
   NavLogo,
   NavMenu,
-  MobileIcon,
   NavItem,
   NavLink,
   SpecialLink,
-} from './NavElements';
-import { logout } from '../../features/user/userSlice';
-import logo from '../../assets/logo.jpeg';
+  MobileIcon,
+  ProfileAvatar,
+} from "./NavElement";
+// import { logout } from '../../features/user/userSlice';
+import logo from "../../assets/logo.jpeg";
 
 const Navbar = () => {
-  const loggedIn = useSelector(state => state.user.loggedIn);
-  const dispatch = useDispatch();
-  const handleLogout = e => {
-    e.preventDefault();
-    dispatch(logout());
-  };
+  const loggedIn = useSelector((state) => state.user.loggedIn);
+  // const dispatch = useDispatch();
+  // const handleLogout = (e) => {
+  //   e.preventDefault();
+  //   dispatch(logout());
+  // };
 
   return (
     <>
       <Nav>
         <NavContainer>
+          <MobileIcon>
+            <FaBars />
+          </MobileIcon>
           <NavLogo to="/">
             <img src={logo} alt="Company brand" />
           </NavLogo>
 
           <MobileIcon>
-            <FaBars />
+            <FaSearch />
           </MobileIcon>
           <NavMenu>
             {loggedIn ? (
-              <NavItem>
-                <NavLink to="/dashboard">Dashboard</NavLink>
-                <a href="/" onClick={handleLogout}>
-                  Logout
-                </a>
-              </NavItem>
+              <>
+                <li>
+                  <NavLink to="/books">Books</NavLink>
+                </li>
+                <li>
+                  <ProfileAvatar>
+                    <img
+                      src="https://www.w3schools.com/howto/img_avatar.png"
+                      alt="Random image"
+                      width="30"
+                      height="30"
+                    />
+                  </ProfileAvatar>
+                </li>
+              </>
             ) : (
               <>
-                <NavItem>
+                <li>
                   <NavLink to="/">Go Home</NavLink>
-                </NavItem>
-                <NavItem>
+                </li>
+                <li>
                   <NavLink to="/login">Login</NavLink>
-                </NavItem>
-                <NavItem>
+                </li>
+                <li>
                   <NavLink to="/sign_up">
                     <SpecialLink>Sign up</SpecialLink>
                   </NavLink>
-                </NavItem>
+                </li>
               </>
             )}
           </NavMenu>

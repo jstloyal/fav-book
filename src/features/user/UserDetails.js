@@ -11,8 +11,10 @@ const UserDetails = () => {
       <ul>
         <li>
           <img
-            src="http://unsplash.it/100/100?gravity=center"
+            src="https://www.w3schools.com/howto/img_avatar.png"
             alt="Random unsplash img"
+            width="100"
+            height="100"
           />
         </li>
         <li>
@@ -21,7 +23,7 @@ const UserDetails = () => {
         </li>
         <li>
           Username:
-          {username}
+          {nickname}
         </li>
         <li>
           Email:
