@@ -4,6 +4,8 @@ import Error from '../components/Error';
 import NewBooks from '../features/catalog/NewBooks';
 import FavoritedBooks from '../features/catalog/FavoritedBooks';
 import HeroSection from '../components/HeroSection';
+import DashboardSection from '../components/DashboardSection';
+import DesignerSection from '../components/DesignerSection';
 
 const Home = () => {
   const loading = useSelector(state => state.catalog.loaders.loadingBooks);
@@ -16,6 +18,8 @@ const Home = () => {
   ) : (
     <div>
       <HeroSection />
+      <DashboardSection />
+      <DesignerSection />
       <FavoritedBooks />
       <NewBooks />
     </div>
