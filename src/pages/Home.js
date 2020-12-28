@@ -6,6 +6,7 @@ import FavoritedBooks from '../features/catalog/FavoritedBooks';
 import HeroSection from '../components/HeroSection';
 import DashboardSection from '../components/DashboardSection';
 import DesignerSection from '../components/DesignerSection';
+import PeopleSection from '../components/PeopleSection';
 
 const Home = () => {
   const loading = useSelector(state => state.catalog.loaders.loadingBooks);
@@ -20,6 +21,7 @@ const Home = () => {
       <HeroSection />
       <DashboardSection />
       <DesignerSection />
+      <PeopleSection />
       <FavoritedBooks />
       <NewBooks />
     </div>
