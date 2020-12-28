@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { FaBars, FaSearch } from "react-icons/fa";
-import { logout } from '../../features/user/userSlice';
+// import { logout } from '../../features/user/userSlice';
 import {
   Nav,
   NavContainer,
@@ -12,10 +12,10 @@ import {
   MobileIcon,
   ProfileAvatar,
 } from "./NavElement";
-// import { logout } from '../../features/user/userSlice';
 import logo from "../../assets/logo.jpeg";
+import PropTypes from 'prop-types';
 
-const Navbar = () => {
+const Navbar = ({ toggle }) => {
   const loggedIn = useSelector((state) => state.user.loggedIn);
   // const dispatch = useDispatch();
   // const handleLogout = (e) => {
@@ -27,7 +27,7 @@ const Navbar = () => {
     <>
       <Nav>
         <NavContainer>
-          <MobileIcon>
+          <MobileIcon onClick={toggle}>
             <FaBars />
           </MobileIcon>
           <NavLogo to="/">
@@ -44,9 +44,9 @@ const Navbar = () => {
                   <NavLink to="/books">Books</NavLink>
                 </li>
                 <li>
-                  <ProfileAvatar>
+                  <ProfileAvatar onClick={toggle}>
                     <img
-                      src="https://www.w3schools.com/howto/img_avatar.png"
+                      src="http://unsplash.it/30/30?gravity=center"
                       alt="Random image"
                       width="30"
                       height="30"
@@ -74,6 +74,10 @@ const Navbar = () => {
       </Nav>
     </>
   );
+};
+
+Navbar.propTypes = {
+  toggle: PropTypes.func.isRequired,
 };
 
 export default Navbar;

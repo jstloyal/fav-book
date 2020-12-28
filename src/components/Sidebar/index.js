@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../features/user/userSlice';
+import PropTypes from 'prop-types';
 import {
   SidebarContainer,
   SidebarMenu,
@@ -9,10 +10,11 @@ import {
   SidebarProfile,
   SpecialLink,
   Divider,
+  AnchorLink,
 } from './SidebarElements';
 import logo from '../../assets/logo.jpeg';
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen, toggle }) => {
   const loggedIn = useSelector(state => state.user.loggedIn);
   const user = useSelector((state) => state.user.user);
 
@@ -25,7 +27,7 @@ const Sidebar = () => {
   const { name, nickname } = user;
   
   return (
-    <SidebarContainer>
+    <SidebarContainer isOpen={isOpen} onClick={toggle}>
       {loggedIn ? (
         <>
           <SidebarProfile>
@@ -54,7 +56,7 @@ const Sidebar = () => {
             </SidebarItem>
             <SidebarItem>
               <SidebarLink to="/sign_up">
-                <SpecialLink onClick={handleLogout}>Logout</SpecialLink>
+                <AnchorLink onClick={handleLogout}>Logout</AnchorLink>
               </SidebarLink>
             </SidebarItem>
           </SidebarMenu>
@@ -65,9 +67,7 @@ const Sidebar = () => {
             <SidebarLink to="/login">Login</SidebarLink>
           </SidebarItem>
           <SidebarItem>
-            <SidebarLink to="/sign_up">
-              <SpecialLink>Sign up</SpecialLink>
-            </SidebarLink>
+            <SpecialLink to="/sign_up">Sign up</SpecialLink>
           </SidebarItem>
         </SidebarMenu>
       )}
@@ -76,6 +76,11 @@ const Sidebar = () => {
       </SidebarLogo>
     </SidebarContainer>
   );
+};
+
+Sidebar.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  toggle: PropTypes.func.isRequired,
 };
 
 export default Sidebar;

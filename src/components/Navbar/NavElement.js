@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 
 export const Nav = styled.nav`
 
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.3);
   position: fixed;
+  color: #fff;
   width: 100%;
   left: 0;
   right: 0;
@@ -12,9 +13,12 @@ export const Nav = styled.nav`
   text-transform: uppercase;
   z-index: 10;
   font-weight: bold;
+  transition: 0.3s ease-in-out;
+  left: ${({ sidebarIsOpen }) => (sidebarIsOpen ? '270px' : '0')};
 `;
 
 export const NavContainer = styled.div`
+  background-color: transparent;
   max-width: 1100px;
   display: flex;
   justify-content: space-between;
@@ -27,6 +31,10 @@ export const NavLogo = styled(Link)`
   width: 100px;
   display: flex;
   align-items: center;
+  padding: 2px;
+  border-radius: 5px;
+  background-color: rgb(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 2px rgb(233, 84, 6);
 `;
 
 export const NavMenu = styled.ul`
@@ -65,6 +73,7 @@ export const MobileIcon = styled.div`
   display: flex;
   align-items: center;
   padding: 2px 5px;
+  cursor: pointer;
   @media screen and (min-width: 768px) {
     display: none;
   }
@@ -74,6 +83,11 @@ export const ProfileAvatar = styled.div`
   display: flex;
   align-items: center;
   margin-left: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  &:hover {
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  }
   img {
     border-radius: 50%;
   }

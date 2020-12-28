@@ -1,9 +1,7 @@
 import Main from './components';
 
 const App = () => (
-  <div className="App">
-    <Main />
-  </div>
+  <Main />
 );
 
 export default App;
