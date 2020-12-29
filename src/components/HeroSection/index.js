@@ -1,4 +1,4 @@
-import { FaPlayCircle } from 'react-icons/fa';
+import { FaPlayCircle, FaChevronDown } from 'react-icons/fa';
 import {
   HeroContainer,
   HeroBg,
@@ -34,7 +34,9 @@ const HeroSection = () => {
           </VideoLink>
         </div>
       </HeroContent>
-      <DownArrow />
+      <DownArrow to="dashboard" id="dashboard">
+      <FaChevronDown />
+      </DownArrow>
     </HeroContainer>
   );
 };

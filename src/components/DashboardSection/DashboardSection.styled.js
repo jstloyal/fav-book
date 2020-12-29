@@ -9,6 +9,7 @@ export const DashboardContainer = styled.section`
     h2 {
       font-size: 1rem;
     }
+
     p {
       font-size: 0.625rem;
       font-weight: bold;
@@ -16,6 +17,12 @@ export const DashboardContainer = styled.section`
       text-transform: uppercase;
     }
   }
+
+  .image {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
   .image,
   .details {
     padding: 0 30px;
@@ -33,7 +40,21 @@ export const DashboardContainer = styled.section`
       margin-bottom: 10px;
     }
   }
+
+  @media screen and (min-width: 768px) {
+    .main {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 992px;
+      margin: 0 auto;
+    }
+    .details {
+      margin-top: 0;
+    }
+  }
 `;
+
 export const Button = styled(Link)`
   border-radius: 50px;
   padding: 5px 20px;

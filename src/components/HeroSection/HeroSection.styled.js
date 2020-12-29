@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { FaChevronDown } from 'react-icons/fa';
+// import { FaChevronDown } from 'react-icons/fa';
+import { Link as ScrollLink } from 'react-scroll';
 
 export const HeroContainer = styled.section`
   max-width: 1100px;
@@ -22,7 +23,7 @@ export const HeroBg = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: red;
+  background: #fafafa;
   overflow: hidden;
 `;
 
@@ -31,6 +32,10 @@ export const VideoBg = styled.video`
   height: 100%;
   -o-object-fit: cover;
   object-fit: cover;
+
+  @media screen and (min-width: 568px) {
+    object-position: center 74%;
+  }
 `;
 
 export const HeroContent = styled.div`
@@ -77,14 +82,19 @@ export const VideoLink = styled.a`
   }
 `;
 
-export const DownArrow = styled(FaChevronDown)`
+export const DownArrow = styled(ScrollLink)`
   position: absolute;
-  bottom: 5px;
+  bottom: 15px;
   right: calc(50% - 20px);
   color: rgba(256, 256, 256, 0.5);
   font-size: 30px;
   cursor: pointer;
+
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.2);
+  }
+
+  & > :first-child {
+    font-size: 2.5rem;
   }
 `;

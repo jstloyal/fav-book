@@ -5,6 +5,12 @@ export const Container = styled.section`
   padding: 45px 15px;
   background: #e7f0ff;
   text-align: center;
+
+  .wrapper {
+    max-width: 992px;
+    margin: 0 auto;
+  }
+
   .images {
     position: relative;
     width: 100%;
@@ -47,6 +53,15 @@ export const Container = styled.section`
       font-size: 0.725rem;
       line-height: 1.3;
       margin-bottom: 10px;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row-reverse;
     }
   }
 `;
