@@ -55,6 +55,15 @@ const Sidebar = ({ isOpen, toggle }) => {
               <SidebarLink to="/login">Messages</SidebarLink>
             </SidebarItem>
             <SidebarItem>
+              <SidebarLink to="/">Statistics</SidebarLink>
+            </SidebarItem>
+          </SidebarMenu>
+          <Divider />
+          <SidebarMenu>
+            <SidebarItem>
+              <SidebarLink to="/login">Help</SidebarLink>
+            </SidebarItem>
+            <SidebarItem>
               <AnchorLink onClick={handleLogout}>Logout</AnchorLink>
             </SidebarItem>
           </SidebarMenu>
@@ -70,7 +79,8 @@ const Sidebar = ({ isOpen, toggle }) => {
         </SidebarMenu>
       )}
       <SidebarLogo to="/">
-        <img src={logo} alt="brand logo" width="150" />
+        <img src={logo} alt="brand logo" width="50" />
+        Books
       </SidebarLogo>
     </SidebarContainer>
   );

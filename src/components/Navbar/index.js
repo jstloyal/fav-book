@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useSelector } from "react-redux";
 import { FaBars, FaSearch } from "react-icons/fa";
 // import { logout } from '../../features/user/userSlice';
@@ -15,23 +16,30 @@ import {
 import logo from "../../assets/logo.jpeg";
 import PropTypes from 'prop-types';
 
-const Navbar = ({ toggle }) => {
+const Navbar = ({ toggle, sidebarIsOpen }) => {
   const loggedIn = useSelector((state) => state.user.loggedIn);
-  // const dispatch = useDispatch();
-  // const handleLogout = (e) => {
-  //   e.preventDefault();
-  //   dispatch(logout());
-  // };
+  
+  const [scrolled, setScrolled] = useState(false);
+
+  document.addEventListener('scroll', () => {
+    const scrolledY = document.scrollingElement.scrollTop;
+    if (scrolledY > 80 && !scrolled) {
+      setScrolled(true);
+    } else if (scrolledY < 80 && scrolled) {
+      setScrolled(false);
+    }
+  });
 
   return (
     <>
-      <Nav>
+      <Nav sidebarIsOpen={sidebarIsOpen} scrolled={scrolled}>
         <NavContainer>
           <MobileIcon onClick={toggle}>
             <FaBars />
           </MobileIcon>
           <NavLogo to="/">
-            <img src={logo} alt="Company brand" />
+            <img src={logo} alt="Company brand" width="40" />
+            Books
           </NavLogo>
 
           <MobileIcon>
@@ -78,6 +86,7 @@ const Navbar = ({ toggle }) => {
 
 Navbar.propTypes = {
   toggle: PropTypes.func.isRequired,
+  sidebarIsOpen: PropTypes.bool.isRequired,
 };
 
 export default Navbar;

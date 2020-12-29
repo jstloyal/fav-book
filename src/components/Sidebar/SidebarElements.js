@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-// import { FaTimes } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 export const SidebarContainer = styled.aside`
@@ -8,9 +7,11 @@ export const SidebarContainer = styled.aside`
   width: 250px;
   height: 100%;
   align-items: center;
+  max-height: 100vh;
   top: 0;
   left: 0;
-  transition: 0.3s ease-in-out;
+  bottom: 0;
+  transition: 0.1s ease-in;
   opacity: ${({ isOpen }) => (isOpen ? '100%' : '0')};
   left: ${({ isOpen }) => (isOpen ? '0' : '-100%')};
   background: #fafafa;
@@ -20,11 +21,14 @@ export const SidebarLogo = styled(Link)`
   display: flex;
   justify-content: center;
   margin: 30px auto 0;
-  max-width: 200px;
+  max-width: 100px;
   padding: 5px;
-  border-radius: 5px;
-  background-color: rgb(0, 0, 0, 0.2);
-  box-shadow: 0px 0px 3px rgb(233, 84, 6);
+  align-items: center;
+  margin: 30px auto 0;
+  padding: 5px;
+  color: #565656;
+  font-size: 1.8rem;
+  font-weight: bold;
 `;
 export const SidebarProfile = styled.div`
   padding: 25px;
