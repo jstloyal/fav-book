@@ -1,4 +1,4 @@
-import { Container, Button } from './Components.styled.js';
+import { Container, StyledLink } from './Components.styled.js';
 import LoginForm from '../features/user/LoginForm';
 
 const Login = () => {
@@ -13,7 +13,7 @@ const Login = () => {
         <LoginForm />
 
         <footer>
-          <Button to="/sign_up">Create account</Button>
+          <StyledLink to="/sign_up">Create account</StyledLink>
         </footer>
       </div>  
     </Container>

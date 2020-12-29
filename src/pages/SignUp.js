@@ -1,5 +1,5 @@
 import SignUpForm from '../features/user/SignUpForm';
-import { Container, Button } from './Components.styled.js';
+import { Container, StyledLink } from './Components.styled.js';
 
 const SignUp = () => (
   <Container>
@@ -11,7 +11,7 @@ const SignUp = () => (
       <SignUpForm />
 
       <footer>
-        <Button to="/login">Already registered?</Button>
+        <StyledLink to="/login">Already registered?</StyledLink>
       </footer>
     </div>
   </Container>

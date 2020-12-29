@@ -20,7 +20,8 @@ export const login = createAsyncThunk(
         uid: headers.uid,
       };
       localStorage.setItem('currentUser', JSON.stringify({ user, header }));
-      window.flash(`Welcome ${user.name}`);
+
+      window.flash(`Welcome ${user.name}!`);
 
       return { user, header };
     } catch (error) {

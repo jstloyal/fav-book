@@ -2,19 +2,19 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const Nav = styled.nav`
-  ${'' /* background:; */}
   position: fixed;
-  color: #fff;
   width: 100%;
   left: 0;
   right: 0;
-  padding: 3px;
-  text-transform: uppercase;
   z-index: 10;
   font-weight: bold;
   transition: 0.1s ease-in;
   left: ${({ sidebarIsOpen }) => (sidebarIsOpen ? '270px' : '0')};
-  background: ${({ scrolled }) => scrolled ? 'rgba(0, 0, 0, 0.3)' : 'transparent'};
+  background: ${({ scrolled, mobileView }) =>
+    scrolled && !mobileView ? 'rgba(0, 0, 0, 0.3)' : 'transparent'};
+  color: ${({ mobileView }) => (mobileView ? '#565656' : '#fff')};
+  padding: ${({ mobileView }) => (mobileView ? '10px 0' : '3px')};
+  text-transform: ${({ mobileView }) => (mobileView ? 'none' : 'uppercase')};
 `;
 
 export const NavContainer = styled.div`
@@ -74,6 +74,7 @@ export const MobileIcon = styled.div`
   align-items: center;
   padding: 2px 5px;
   cursor: pointer;
+
   @media screen and (min-width: 768px) {
     display: none;
   }
@@ -85,9 +86,11 @@ export const ProfileAvatar = styled.div`
   margin-left: 10px;
   cursor: pointer;
   border-radius: 50%;
+
   &:hover {
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
   }
+
   img {
     border-radius: 50%;
   }

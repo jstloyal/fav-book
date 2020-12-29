@@ -2,10 +2,12 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const DashboardContainer = styled.section`
-  margin: 30px 5px;
+  padding: 60px 5px;
   text-align: center;
+
   header {
     margin-bottom: 30px;
+
     h2 {
       font-size: 1rem;
     }
@@ -27,6 +29,7 @@ export const DashboardContainer = styled.section`
   .details {
     padding: 0 30px;
   }
+
   .details {
     margin-top: 30px;
 
@@ -49,6 +52,7 @@ export const DashboardContainer = styled.section`
       max-width: 992px;
       margin: 0 auto;
     }
+
     .details {
       margin-top: 0;
     }

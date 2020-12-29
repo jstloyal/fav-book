@@ -17,6 +17,17 @@ import logo from '../../assets/logo.jpeg';
 const Sidebar = ({ isOpen, toggle }) => {
   const loggedIn = useSelector(state => state.user.loggedIn);
   const user = useSelector((state) => state.user.user);
+  const booksCount = useSelector(state => state.catalog.books.length);
+  const createdCount = useSelector(
+    state => state.catalog.books.filter(book => book.user_id === user.id)
+      .length
+  );
+  const favoritedCount = useSelector(
+    state =>
+      state.catalog.products.filter(product =>
+        product.favorited_by.some(favorite => favorite.id === user.id)
+      ).length
+  );
 
   const dispatch = useDispatch();
   const handleLogout = e => {
@@ -46,16 +57,20 @@ const Sidebar = ({ isOpen, toggle }) => {
               <SidebarLink to="/dashboard">Dashboard</SidebarLink>
             </SidebarItem>
             <SidebarItem>
-              <div>
-                <SidebarLink to="/login">Notifications</SidebarLink>
-                <spam>6</spam>
-              </div>
+              <SidebarLink to="/books">
+                Books <span>{booksCount}</span>
+              </SidebarLink>
             </SidebarItem>
             <SidebarItem>
-              <SidebarLink to="/login">Messages</SidebarLink>
+              <SidebarLink to="/creations">
+                My books <span>{createdCount}</span>
+              </SidebarLink>
             </SidebarItem>
             <SidebarItem>
-              <SidebarLink to="/">Statistics</SidebarLink>
+              <SidebarLink to="/favorites">My favorites {favoritedCount}</SidebarLink>
+            </SidebarItem>
+            <SidebarItem>
+              <SidebarLink to="/account">Account</SidebarLink>
             </SidebarItem>
           </SidebarMenu>
           <Divider />

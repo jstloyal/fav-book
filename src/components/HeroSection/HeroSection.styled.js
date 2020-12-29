@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-// import { FaChevronDown } from 'react-icons/fa';
 import { Link as ScrollLink } from 'react-scroll';
 
 export const HeroContainer = styled.section`
@@ -44,16 +43,19 @@ export const HeroContent = styled.div`
   color: #fff;
   line-height: 0.9;
   text-shadow: 3px 4px 7px rgba(81, 67, 21, 0.8);
+
   h1 {
     font-size: 1.9rem;
     line-height: 1.2;
     margin-bottom: 10px;
   }
+
   p {
     line-height: 1.2;
     margin-bottom: 15px;
     font-size: 1.2rem;
   }
+
   .actions {
     text-transform: uppercase;
     font-size: 0.875rem;
@@ -76,6 +78,7 @@ export const VideoLink = styled.a`
   display: flex;
   align-items: center;
   font-size: 0.675rem;
+
   & > :first-child {
     margin-right: 5px;
     font-size: 25px;
@@ -84,7 +87,7 @@ export const VideoLink = styled.a`
 
 export const DownArrow = styled(ScrollLink)`
   position: absolute;
-  bottom: 15px;
+  bottom: 30px;
   right: calc(50% - 20px);
   color: rgba(256, 256, 256, 0.5);
   font-size: 30px;
