@@ -22,6 +22,7 @@ const AddBookForm = () => {
     formData.append('image', data.image[0]);
 
     dispatch(addBook(formData));
+    reset();
   };
 
   return (

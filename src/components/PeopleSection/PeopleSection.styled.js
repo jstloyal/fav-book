@@ -3,11 +3,14 @@ import styled from 'styled-components';
 export const Container = styled.section`
   padding: 60px 5px;
   text-align: center;
+
   .details {
     margin-bottom: 30px;
+
     h2 {
       font-size: 1rem;
     }
+
     p {
       font-size: 0.625rem;
       font-weight: bold;
@@ -15,6 +18,7 @@ export const Container = styled.section`
       text-transform: uppercase;
     }
   }
+
   .articles {
     max-width: 992px;
     margin: 0 auto;

@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import Error from '../../components/Error';
 import { signUp } from './userSlice';
+import { Form } from './Components.styled';
 
 const SignUpForm = () => {
   const signUpLoader = useSelector(state => state.user.loaders.signUp);
@@ -14,7 +15,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} encType="multipart/formdata">
+    <Form onSubmit={handleSubmit(onSubmit)} encType="multipart/formdata">
       <div>
         <input
           name="email"
@@ -102,7 +103,7 @@ const SignUpForm = () => {
       )}
 
       {(signUpError && <Error errors={signUpError} />) || null}
-    </form>
+    </Form>
   );
 };
 

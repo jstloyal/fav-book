@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
+import { Form } from './Components.styled';
 import { login } from './userSlice';
 import Error from '../../components/Error';
 
@@ -20,7 +21,7 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
+    <Form onSubmit={handleSubmit(onSubmit)} autoComplete="off">
       <div>
         <input
           name="email"
@@ -69,7 +70,7 @@ const LoginForm = () => {
       )}
 
       {(loginError && <Error errors={loginError} />) || null}
-    </form>
+    </Form>
   );
 };
 
