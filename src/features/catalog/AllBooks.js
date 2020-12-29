@@ -1,17 +1,22 @@
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Book from './Book';
+import SliderPagination from './SliderPagination';
+import { BooksContainer } from './Global.styled';
 
 const AllBooks = () => {
+  const [current, setCurrent] = useState(1);
   const books = useSelector(state => state.catalog.books);
   const myBooks = [...books].map(book => (
     <Book key={book.id} book={book} />
   ));
 
   return (
-    <div>
-      <h1>All Books</h1>
-      {myBooks}
-    </div>
+    <BooksContainer>
+      <div className="slider full">{myBooks}</div>
+
+      <SliderPagination total={books.length} current={current} />
+    </BooksContainer>
   );
 };
 

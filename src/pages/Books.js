@@ -17,7 +17,6 @@ const Books = () => {
         <Error errors={error} />
       ) : (
         <MobileContainer>
-          <h1>All Books</h1>
           <AllBooks />
         </MobileContainer>
       )}

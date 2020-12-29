@@ -79,7 +79,6 @@ export const SidebarLink = styled(Link)`
 `;
 
 export const SpecialLink = styled(SidebarLink)`
-  border-radius: 50px;
   color: rgb(233, 84, 6);
 `;
 
@@ -87,4 +86,5 @@ export const AnchorLink = styled.a`
   padding: 5px 25px;
   font-size: 0.825rem;
   color: red;
+  cursor: pointer;
 `;
