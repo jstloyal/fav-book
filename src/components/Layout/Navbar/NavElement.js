@@ -36,7 +36,7 @@ export const NavLogo = styled(Link)`
 `;
 
 export const NavMenu = styled.ul`
-  display: flex;
+  /* display: flex; */
   align-items: center;
   text-align: center;
   display: none;

@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types';
 import ShowBook from './ShowBook';
-import Layout from '../Layout';
+import MobileLayout from '../Layout/MobileLayout';
 
 const BookDetails = ({ match }) => {
   const { id } = match.params;
 
   return (
-    <Layout>
+    <MobileLayout bookPage={true}>
       <h1>Book Details</h1>
       <ShowBook id={id} />
-    </Layout>
+    </MobileLayout>
   );
 };
 

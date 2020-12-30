@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
 export const BooksContainer = styled.section`
+  height: 80vh;
+  max-height: 500px;
   display: grid;
   grid-template-columns: 1px 1fr 1px;
-  grid-template-rows: 80vh;
 
   & > * {
     grid-column: 2 / -2;
@@ -14,24 +15,17 @@ export const BooksContainer = styled.section`
   }
 
   .slider {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    gap: 15px;
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
     &::-webkit-scrollbar {
       display: none;
     }
-
-    overflow-x: scroll;
-    overflow-y: hidden;
-    gap: 30px;
-    display: flex;
   }
-`;
-
-export const SliderPaginationContainer = styled.div`
-  font-weight: bold;
-  word-spacing: 1px;
-  text-align: center;
-  margin-top: 15px;
 `;
 
 export const BookContainer = styled.article`
@@ -75,4 +69,11 @@ export const BookContainer = styled.article`
       }
     }
   }
+`;
+
+export const SliderPaginationContainer = styled.div`
+  font-weight: bold;
+  word-spacing: 1px;
+  text-align: center;
+  margin-top: 15px;
 `;

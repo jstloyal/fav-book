@@ -11,14 +11,12 @@ import {
   MobileIcon,
   DownloadLink,
   ProfileAvatar,
-} from './NavElements';
+} from './NavElement';
 
-const MobileNavbar = ({ toggle, sidebarIsOpen }) => {
+const MobileNavbar = ({ toggle, sidebarIsOpen, bookPage, title }) => {
   const loggedIn = useSelector((state) => state.user.loggedIn);
+  const bookName = useSelector(state => state.catalog.book.title);
   const [scrolled, setScrolled] = useState(false);
-  const currentBookTitle = useSelector(
-    state => state.catalog.currentBookTitle
-  );
 
   document.addEventListener('scroll', () => {
     const scrolledY = document.scrollingElement.scrollTop;
@@ -37,9 +35,7 @@ const MobileNavbar = ({ toggle, sidebarIsOpen }) => {
             <FaBars />
           </MobileIcon>
 
-          <h3>
-            {currentBookTitle ? currentBookTitle : 'Loading book'}
-          </h3>
+          <h3>{bookName && bookPage ? bookName : title}</h3>
 
           <MobileIcon>
             <FaSearch />
@@ -90,6 +86,8 @@ const MobileNavbar = ({ toggle, sidebarIsOpen }) => {
 MobileNavbar.propTypes = {
   toggle: PropTypes.func.isRequired,
   sidebarIsOpen: PropTypes.bool.isRequired,
+  bookPage: PropTypes.bool,
+  title: PropTypes.string,
 };
 
 export default MobileNavbar;

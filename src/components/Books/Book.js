@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ReactStars from 'react-rating-stars-component';
-import { BookContainer } from './Global.styled.js';
+import { BookContainer } from './Styles.styled.js';
 
 const Book = ({ book }) => {
   const { id, title, author, genre, image_url: imageUrl, ratings } = book;
-  const rating = ratings ? ratings : 3.5;
+  const rating = ratings ? Math.floor(Math.random() * Math.floor(6));
 
   return (
     <BookContainer>
-      <Link to={`/products/${id}`}>
+      <Link to={`/books/${id}`}>
         <div className="image">
           <img src={imageUrl} alt="Book" />
         </div>
@@ -37,7 +37,7 @@ const Book = ({ book }) => {
   );
 };
 
-Product.propTypes = {
+Book.propTypes = {
   book: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 

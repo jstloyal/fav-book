@@ -25,8 +25,8 @@ const Sidebar = ({ isOpen, toggle }) => {
   );
   const favoritedCount = useSelector(
     state =>
-      state.catalog.products.filter(product =>
-        product.favorited_by.some(favorite => favorite.id === user.id)
+      state.catalog.books.filter(book =>
+        book.favorited_by.some(favorite => favorite.id === user.id)
       ).length
   );
 
