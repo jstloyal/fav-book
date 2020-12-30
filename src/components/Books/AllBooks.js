@@ -29,9 +29,11 @@ const AllBooks = () => {
         <Error errors={error} />
       ) : (
         <div className="slider">
-          {myBooks.length === 0
-            ? 'No book in the database.'
-            : myBooks}
+          {myBooks.length === 0 ? (
+            <p className="text-center">No books in the database</p>
+          ) : (
+            myBooks
+          )}
         </div>
       )}
 

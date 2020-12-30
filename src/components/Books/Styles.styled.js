@@ -18,6 +18,7 @@ export const BooksContainer = styled.section`
   .slider {
     gap: 15px;
     display: flex;
+    align-items: center;
     overflow-x: scroll;
     overflow-y: hidden;
     -ms-overflow-style: none;
@@ -25,6 +26,12 @@ export const BooksContainer = styled.section`
 
     &::-webkit-scrollbar {
       display: none;
+    }
+
+    .text-center {
+      position: fixed;
+      text-align: center;
+      width: 100%;
     }
   }
 `;
