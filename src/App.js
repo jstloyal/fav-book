@@ -1,4 +1,4 @@
-import Main from './pages';
+import Main from './components';
 import './App.css';
 
 const App = () => (

@@ -22,11 +22,9 @@ export const addBook = createAsyncThunk(
       const { header: headers } = JSON.parse(
         localStorage.getItem('currentUser'),
       );
-      const response = await axios.post(baseUrl, formData, { headers });
-      window.flash(`Book ${response.data.title} added!`);
+      const response = await axios.post(baseUrl, formData, headers);
       return response.data;
     } catch (error) {
-      window.flash('Please check the form errors!', 'error');
       return rejectWithValue(error.response.data);
     }
   },
@@ -37,7 +35,6 @@ export const deleteBook = createAsyncThunk(
   async id => {
     const { header: headers } = JSON.parse(localStorage.getItem('currentUser'));
     const response = await axios.delete(`${baseUrl}/${id}`, { headers });
-    window.flash(`Book ${response.data.title} deleted!`);
     return response.data;
   },
 );
@@ -49,10 +46,7 @@ export const favorite = createAsyncThunk(
   }) => {
     const { header: headers } = JSON.parse(localStorage.getItem('currentUser'));
     await axios.put(`${baseUrl}/${id}/favorite`, { type }, { headers });
-    const message = type === 'favorite'
-      ? 'Book added to favorites'
-      : 'Book removed from favorites';
-    window.flash(message);
+    
     return { id, type, currentUser };
   },
 );
