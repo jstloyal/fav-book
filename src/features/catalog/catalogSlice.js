@@ -142,6 +142,11 @@ export const catalogSlice = createSlice({
         }
         return book;
       });
+      type === 'favorite'
+        ? state.book.favorited_by.push(currentUser)
+        : (state.book.favorited_by = state.book.favorited_by.filter(
+          favorite => favorite.id !== currentUser.id
+        ));
       state.loaders.favorite = false;
       state.errors.favorite = false;
     },

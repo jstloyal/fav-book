@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { FaBars, FaSearch } from 'react-icons/fa';
+import { useHistory } from 'react-router-dom';
+import { FaArrowLeft, FaBars, FaSearch } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import {
   Nav,
@@ -17,6 +18,7 @@ const MobileNavbar = ({ toggle, sidebarIsOpen, bookPage, title }) => {
   const loggedIn = useSelector((state) => state.user.loggedIn);
   const bookName = useSelector(state => state.catalog.book.title);
   const [scrolled, setScrolled] = useState(false);
+  const history = useHistory();
 
   document.addEventListener('scroll', () => {
     const scrolledY = document.scrollingElement.scrollTop;
@@ -27,14 +29,24 @@ const MobileNavbar = ({ toggle, sidebarIsOpen, bookPage, title }) => {
     }
   });
 
+  const goBack = e => {
+    e.preventDefault();
+    history.goBack();
+  };
+
   return (
     <>
       <Nav sidebarIsOpen={sidebarIsOpen} scrolled={scrolled} mobileView={true}>
         <NavContainer>
-          <MobileIcon onClick={toggle}>
-            <FaBars />
-          </MobileIcon>
-
+          {bookPage ? (
+            <MobileIcon onClick={goBack}>
+              <FaArrowLeft />
+            </MobileIcon>
+          ) : (
+            <MobileIcon onClick={toggle}>
+              <FaBars />
+            </MobileIcon>
+          )}
           <h3>{bookName && bookPage ? bookName : title}</h3>
 
           <MobileIcon>

@@ -7,7 +7,6 @@ const BookDetails = ({ match }) => {
 
   return (
     <MobileLayout bookPage={true}>
-      <h1>Book Details</h1>
       <ShowBook id={id} />
     </MobileLayout>
   );
