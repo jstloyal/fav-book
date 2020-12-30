@@ -13,6 +13,7 @@ import {
   SpecialLink,
   Divider,
   AnchorLink,
+  PlusIcon,
 } from './SidebarElements';
 
 const Sidebar = ({ isOpen, toggle }) => {
@@ -57,7 +58,9 @@ const Sidebar = ({ isOpen, toggle }) => {
 
           <SidebarMenu>
             <SidebarItem>
-              <SidebarLink to="/dashboard">Dashboard</SidebarLink>
+              <SidebarLink to="/dashboard">
+                Add book <PlusIcon />
+              </SidebarLink>
             </SidebarItem>
             <SidebarItem>
               <SidebarLink to="/books">

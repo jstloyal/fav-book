@@ -2,7 +2,11 @@ import { useSelector } from 'react-redux';
 import Loading from '../Loading';
 import Error from '../Error';
 import Book from './Book';
-import { BooksContainer, ProductsContainer, SliderPaginationContainer } from './Styles.styled';
+import {
+  BooksContainer,
+  SliderPaginationContainer,
+  Button,
+} from './Styles.styled';
 
 const UserFavorites = () => {
   const currentUser = useSelector(state => state.user.user);
@@ -24,9 +28,14 @@ const UserFavorites = () => {
         <Error errors={error} />
       ) : (
         <div className="slider">
-          {myBooks.length === 0
-            ? 'No books favorited by you.'
-            : myBooks}
+          {myBooks.length === 0 ? (
+            <div className="no-books">
+              <p>No book favorited by you.</p>
+              <Button to="/books">Browse books</Button>
+            </div>
+          ) : (
+            myBooks
+          )}
         </div>
       )}
 

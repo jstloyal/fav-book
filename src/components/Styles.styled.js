@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { FaPlus } from 'react-icons/fa';
 
 import background from '../assets/showcase.jpg';
 
-export const MainContainer = styled.main`
+export const MainContainer = styled.div`
   transition: 0.1s ease-in;
   position: relative;
   box-shadow: 0px 0px 20px 1px #000000;
   left: ${({ sidebarIsOpen }) => (sidebarIsOpen ? '270px' : '0')};
-
 
   .logout {
     text-align: center;
@@ -93,6 +93,18 @@ export const MobileContainer = styled.main`
   bottom: 0;
   width: 100%;
   height: 100%;
+
+  .wrapper {
+    text-align: center;
+
+    header {
+      margin-bottom: 15px;
+
+      p {
+        font-size: 0.875rem;
+      }
+    }
+  }
 `;
 
 export const StyledLink = styled(Link)`
@@ -100,16 +112,30 @@ export const StyledLink = styled(Link)`
 `;
 
 export const Form = styled.form`
-  input {
+  input,
+  textarea {
     padding: 8px 30px;
     border-radius: 50px;
-    margin: 10px auto;
+    margin: 8px auto;
     border: 1px solid rgba(0, 0, 0, 0.1);
     font-size: 0.75rem;
 
     &:focus,
     &:active {
       outline: none;
+    }
+  }
+
+  &.add-book {
+    text-align: center;
+
+    input,
+    textarea {
+      width: 250px;
+    }
+
+    textarea {
+      border-radius: 20px;
     }
   }
 
@@ -156,4 +182,9 @@ export const Account = styled.main`
       }
     }
   }
+`;
+
+export const PlusIcon = styled(FaPlus)`
+  margin-left: auto;
+  color: rgb(233, 84, 6);
 `;

@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import Error from '../Error';
 import { addBook } from '../../features/catalog/catalogSlice';
+import { Form } from '../Styles.styled';
 
 const AddBookForm = () => {
   const user = useSelector(state => state.user.user);
@@ -26,8 +27,7 @@ const AddBookForm = () => {
 
   return (
     <div>
-      <h3>Add Book</h3>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <Form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <input
             name="title"
@@ -52,8 +52,8 @@ const AddBookForm = () => {
         <div>
           <textarea
             name="decription"
-            placeholder="Description"
-            rows="10"
+            placeholder="Description (summary of the book)"
+            rows="5"
             cols="20"
             ref={register({
               required: {
@@ -146,7 +146,7 @@ const AddBookForm = () => {
           <button type="submit">Add book</button>
         )}
         {(error && <Error errors={error} />) || null}
-      </form>
+      </Form>
     </div>
   );
 };

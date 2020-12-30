@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { FaRegHeart, FaHeart } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 export const BooksContainer = styled.section`
   height: 80vh;
@@ -28,8 +29,7 @@ export const BooksContainer = styled.section`
       display: none;
     }
 
-    .text-center {
-      position: fixed;
+    .no-books {
       text-align: center;
       width: 100%;
     }
@@ -86,7 +86,7 @@ export const SliderPaginationContainer = styled.div`
   margin-top: 15px;
 `;
 
-export const ShowProductContainer = styled.section`
+export const ShowBookContainer = styled.section`
   padding: 45px 0 90px;
   overflow-y: scroll;
   width: 100%;
@@ -170,6 +170,7 @@ export const ShowProductContainer = styled.section`
 
         p {
           font-size: 0.75rem;
+
           &:first-child {
             font-size: 0.875rem;
             font-weight: bold;
@@ -213,4 +214,14 @@ export const FavoriteIcon = styled(FaRegHeart)`
 
 export const UnfavoriteIcon = styled(FaHeart)`
   font-size: 2rem;
+`;
+
+export const Button = styled(Link)`
+  border-radius: 50px;
+  padding: 5px 20px;
+  background: rgb(233, 84, 6);
+  margin-right: 10px;
+  font-size: 0.75rem;
+  color: #fff;
+  text-transform: uppercase;
 `;

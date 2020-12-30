@@ -1,16 +1,20 @@
 import AddBookForm from '../Books/AddBookForm';
-import UserBooks from '../Books/UserBooks';
-import UserFavorites from '../Books/UserFavorites';
-import Layout from '../Layout';
+import MobileLayout from '../Layout/MobileLayout';
+import { MobileContainer } from '../Styles.styled';
 
 const Dashboard = () => {
   return (
-    <Layout>
-      <h1>Dashboard</h1>
-      <AddBookForm />
-      <UserFavorites />
-      <UserBooks />
-    </Layout>
+    <MobileLayout title={'Dashboard'}>
+      <MobileContainer>
+        <div className="wrapper">
+          <header>
+            <h1>Add a Book</h1>
+            <p>Ready to share your favorite book with the world?</p>
+          </header>
+          <AddBookForm />
+        </div>
+      </MobileContainer>
+    </MobileLayout>
   );
 };
 

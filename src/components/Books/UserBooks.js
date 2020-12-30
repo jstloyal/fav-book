@@ -4,7 +4,11 @@ import Loading from '../Loading';
 import Error from '../Error';
 import Book from './Book';
 import { getBooks } from '../../features/catalog/catalogSlice';
-import { BooksContainer, SliderPaginationContainer } from './Styles.styled';
+import {
+  BooksContainer,
+  SliderPaginationContainer,
+  Button,
+} from './Styles.styled';
 
 const AllBooks = () => {
   const currentUser = useSelector(state => state.user.user);
@@ -29,9 +33,14 @@ const AllBooks = () => {
         <Error errors={error} />
       ) : (
         <div className="slider">
-          {myBooks.length === 0
-            ? 'No books aded by you.'
-            : myBooks}
+          {myBooks.length === 0 ? (
+            <div className="no-books">
+              <p>No books added by you.</p>
+              <Button to="/dashboard">Add books</Button>
+            </div>
+          ) : (
+            myBooks
+          )}
         </div>
       )}
 

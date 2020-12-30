@@ -5,7 +5,7 @@ import { BookContainer } from './Styles.styled.js';
 
 const Book = ({ book }) => {
   const { id, title, author, genre, image_url: imageUrl, ratings } = book;
-  const rating = ratings ? Math.floor(Math.random() * Math.floor(6));
+  const rating = ratings ? ratings : Math.floor(Math.random() * Math.floor(6));
 
   return (
     <BookContainer>
