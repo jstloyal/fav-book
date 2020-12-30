@@ -28,11 +28,15 @@ const AllBooks = () => {
       ) : error ? (
         <Error errors={error} />
       ) : (
-        <div className="slider">{myBooks}</div>
+        <div className="slider">
+          {myBooks.length === 0
+            ? 'No book in the database.'
+            : myBooks}
+        </div>
       )}
 
       <SliderPaginationContainer>
-        Total: {books.length}
+        Total: {myBooks.length}
       </SliderPaginationContainer>
     </BooksContainer>
   );
