@@ -30,7 +30,7 @@ const AllBooks = () => {
       ) : (
         <div className="slider">
           {myBooks.length === 0
-            ? 'No books in the database.'
+            ? 'No books aded by you.'
             : myBooks}
         </div>
       )}

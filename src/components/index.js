@@ -10,6 +10,7 @@ import Login from './Login';
 import SignUp from './SignUp';
 import Dashboard from './Dashboard';
 import { loginFromStorage } from '../features/user/userSlice';
+import UserDetails from './UserDetails';
 
 const Main = () => {
   const loggedIn = useSelector(state => state.user.loggedIn);
@@ -42,6 +43,9 @@ const Main = () => {
         </Route>
         <Route exact path="/favorites">
           {loggedIn ? <Favorites /> : <Redirect to="/login" />}
+        </Route>
+        <Route exact path="/account">
+          {loggedIn ? <UserDetails /> : <Redirect to="/login" />}
         </Route>
         <Route exact path="/books" component={Books} />
         <Route exact path="/books/:id" component={BookDetails} />

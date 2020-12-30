@@ -1,14 +1,12 @@
 import AddBookForm from '../Books/AddBookForm';
 import UserBooks from '../Books/UserBooks';
 import UserFavorites from '../Books/UserFavorites';
-import UserDetails from '../UserDetails';
 import Layout from '../Layout';
 
 const Dashboard = () => {
   return (
     <Layout>
       <h1>Dashboard</h1>
-      <UserDetails />
       <AddBookForm />
       <UserFavorites />
       <UserBooks />

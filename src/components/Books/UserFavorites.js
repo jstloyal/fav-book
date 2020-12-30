@@ -25,7 +25,7 @@ const UserFavorites = () => {
       ) : (
         <div className="slider">
           {myBooks.length === 0
-            ? 'No books in the database.'
+            ? 'No books favorited by you.'
             : myBooks}
         </div>
       )}
