@@ -2,9 +2,18 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ReactStars from 'react-rating-stars-component';
 import { BookContainer } from './Styles.styled.js';
+import DeleteButton from './DeleteButton';
 
 const Book = ({ book }) => {
-  const { id, title, author, genre, image_url: imageUrl, ratings } = book;
+  const {
+    id,
+    title,
+    author,
+    genre,
+    user_id: userId,
+    image_url: imageUrl,
+    ratings,
+  } = book;
   const rating = ratings ? ratings : Math.floor(Math.random() * Math.floor(6));
 
   return (
@@ -12,6 +21,7 @@ const Book = ({ book }) => {
       <Link to={`/books/${id}`}>
         <div className="image">
           <img src={imageUrl} alt="Book" />
+          <DeleteButton userId={userId} id={id} />
         </div>
 
         <div className="flex">

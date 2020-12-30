@@ -2,8 +2,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const baseUrl = 'https://favbooks-api.herokuapp.com/api/v1/auth';
-// const baseUrl = 'http://localhost:3000/api/v1/auth';
+// const baseUrl = 'https://favbooks-api.herokuapp.com/api/v1/auth';
+const baseUrl = 'http://localhost:3000/api/v1/auth';
 
 export const login = createAsyncThunk(
   'user/login',

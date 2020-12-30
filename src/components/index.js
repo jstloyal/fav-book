@@ -11,6 +11,7 @@ import SignUp from './SignUp';
 import Dashboard from './Dashboard';
 import { loginFromStorage } from '../features/user/userSlice';
 import UserDetails from './UserDetails';
+import Help from './Help';
 
 const Main = () => {
   const loggedIn = useSelector(state => state.user.loggedIn);
@@ -48,6 +49,7 @@ const Main = () => {
           {loggedIn ? <UserDetails /> : <Redirect to="/login" />}
         </Route>
         <Route exact path="/books" component={Books} />
+        <Route exact path="/help" component={Help} />
         <Route exact path="/books/:id" component={BookDetails} />
         <Route path="/" component={Home} />
       </Switch>

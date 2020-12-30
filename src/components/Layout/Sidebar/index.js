@@ -82,7 +82,7 @@ const Sidebar = ({ isOpen, toggle }) => {
           <Divider />
           <SidebarMenu>
             <SidebarItem>
-              <SidebarLink to="/login">Help</SidebarLink>
+              <SidebarLink to="/help">Help</SidebarLink>
             </SidebarItem>
             <SidebarItem>
               <AnchorLink onClick={handleLogout}>Logout</AnchorLink>
