@@ -1,24 +1,23 @@
 import { useState } from 'react';
-import { useSelector } from "react-redux";
-import { FaBars, FaSearch } from "react-icons/fa";
+import { useSelector } from 'react-redux';
+import { FaBars, FaSearch } from 'react-icons/fa';
 // import { logout } from '../../features/user/userSlice';
+import PropTypes from 'prop-types';
 import {
   Nav,
   NavContainer,
   NavLogo,
   NavMenu,
-  NavItem,
   NavLink,
   SpecialLink,
   MobileIcon,
-  ProfileAvatar,
-} from "./NavElement";
-import logo from "../../../assets/logo.jpeg";
-import PropTypes from 'prop-types';
+  DownloadLink,
+} from './NavElement';
+import logo from '../../../assets/logo.jpeg';
 
 const Navbar = ({ toggle, sidebarIsOpen }) => {
-  const loggedIn = useSelector((state) => state.user.loggedIn);
-  
+  const loggedIn = useSelector(state => state.user.loggedIn);
+
   const [scrolled, setScrolled] = useState(false);
 
   document.addEventListener('scroll', () => {
@@ -42,24 +41,11 @@ const Navbar = ({ toggle, sidebarIsOpen }) => {
             Books
           </NavLogo>
 
-          <MobileIcon>
-            <FaSearch />
-          </MobileIcon>
           <NavMenu>
             {loggedIn ? (
               <>
                 <li>
-                  <NavLink to="/books">Books</NavLink>
-                </li>
-                <li>
-                  <ProfileAvatar onClick={toggle}>
-                    <img
-                      src="http://unsplash.it/30/30?gravity=center"
-                      alt="Random image"
-                      width="30"
-                      height="30"
-                    />
-                  </ProfileAvatar>
+                  <DownloadLink to="/books">Download Application</DownloadLink>
                 </li>
               </>
             ) : (
@@ -70,13 +56,18 @@ const Navbar = ({ toggle, sidebarIsOpen }) => {
                 <li>
                   <NavLink to="/login">Login</NavLink>
                 </li>
-                <li>
+                <li className="lg-screen">
                   <NavLink to="/sign_up">
                     <SpecialLink>Sign up</SpecialLink>
                   </NavLink>
                 </li>
               </>
             )}
+            <li>
+              <MobileIcon>
+                <FaSearch />
+              </MobileIcon>
+            </li>
           </NavMenu>
         </NavContainer>
       </Nav>

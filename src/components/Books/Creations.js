@@ -13,7 +13,7 @@ const Books = () => {
   }, [dispatch, books]);
 
   return (
-    <MobileLayout title={'My books'} bookPage={false}>
+    <MobileLayout title="My books" bookPage={false}>
       <MobileContainer>
         <UserBooks />
       </MobileContainer>

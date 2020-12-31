@@ -9,7 +9,7 @@ import Layout from '../Layout';
 import { getBooks } from '../../features/catalog/catalogSlice';
 
 const Home = () => {
-  const books = useSelector((state) => state.catalog.books);
+  const books = useSelector(state => state.catalog.books);
   const dispatch = useDispatch();
   useEffect(() => {
     if (books.length === 0) dispatch(getBooks());

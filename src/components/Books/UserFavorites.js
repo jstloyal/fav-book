@@ -15,32 +15,29 @@ const UserFavorites = () => {
   const books = useSelector(state => state.catalog.books);
 
   const myBooks = [...books]
-    .filter(book =>
-      book.favorited_by.some(favorite => favorite.id === currentUser.id)
-    )
+    .filter(book => book.favorited_by.some(favorite => favorite.id === currentUser.id))
     .map(book => <Book key={book.id} book={book} />);
 
   return (
     <BooksContainer>
-      {loading ? (
-        <Loading />
-      ) : error ? (
-        <Error errors={error} />
-      ) : (
-        <div className="slider">
-          {myBooks.length === 0 ? (
-            <div className="no-books">
-              <p>No book favorited by you.</p>
-              <Button to="/books">Browse books</Button>
-            </div>
-          ) : (
-            myBooks
-          )}
-        </div>
-      )}
+      {loading ? <Loading /> : null}
+      {error ? <Error errors={error} /> : null}
+
+      <div className="slider">
+        {myBooks.length === 0 && !loading && error ? (
+          <div className="no-books">
+            <p>No books favorited by you.</p>
+            <Button to="/books">Browse books</Button>
+          </div>
+        ) : (
+          myBooks
+        )}
+      </div>
 
       <SliderPaginationContainer>
-        Total: {myBooks.length}
+        Total:
+        {' '}
+        {myBooks.length}
       </SliderPaginationContainer>
     </BooksContainer>
   );

@@ -10,8 +10,7 @@ export const Nav = styled.nav`
   font-weight: bold;
   transition: 0.1s ease-in;
   left: ${({ sidebarIsOpen }) => (sidebarIsOpen ? '270px' : '0')};
-  background: ${({ scrolled, mobileView }) =>
-    scrolled && !mobileView ? 'rgba(0, 0, 0, 0.3)' : 'transparent'};
+  background: ${({ scrolled, mobileView }) => (scrolled && !mobileView ? 'rgba(0, 0, 0, 0.3)' : 'transparent')};
   color: ${({ mobileView }) => (mobileView ? '#565656' : '#fff')};
   padding: ${({ mobileView }) => (mobileView ? '10px' : '3px')};
   text-transform: ${({ mobileView }) => (mobileView ? 'none' : 'uppercase')};

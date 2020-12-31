@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import Book from '../../features/catalog/Book';
+import Book from './Book';
 
 const FavoritedBooks = () => {
   const books = useSelector(state => state.catalog.books);

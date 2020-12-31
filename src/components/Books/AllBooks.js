@@ -3,9 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import Book from './Book';
 import Loading from '../Loading';
 import Error from '../Error';
-// import SliderPagination from './SliderPagination';
 import { getBooks } from '../../features/catalog/catalogSlice';
-import { BooksContainer, SliderPaginationContainer } from './Styles.styled.js';
+import { BooksContainer, SliderPaginationContainer } from './Styles.styled';
 
 const AllBooks = () => {
   const loading = useSelector(state => state.catalog.loaders.loadingBooks);
@@ -23,22 +22,19 @@ const AllBooks = () => {
 
   return (
     <BooksContainer>
-      {loading ? (
-        <Loading />
-      ) : error ? (
-        <Error errors={error} />
-      ) : (
-        <div className="slider">
-          {myBooks.length === 0 ? (
-            <p className="text-center">No books in the database</p>
-          ) : (
-            myBooks
-          )}
-        </div>
-      )}
-
+      {loading ? <Loading /> : null}
+      {error ? <Error errors={error} /> : null}
+      <div className="slider">
+        {myBooks.length === 0 && !loading && !error ? (
+          <p className="text-center">No books in the database</p>
+        ) : (
+          myBooks
+        )}
+      </div>
       <SliderPaginationContainer>
-        Total: {myBooks.length}
+        Total:
+        {' '}
+        {myBooks.length}
       </SliderPaginationContainer>
     </BooksContainer>
   );

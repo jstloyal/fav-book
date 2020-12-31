@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { logout } from '../../../features/user/userSlice';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router';
+import { logout } from '../../../features/user/userSlice';
 import logo from '../../../assets/logo.jpeg';
 import {
   SidebarContainer,
@@ -18,20 +18,21 @@ import {
 
 const Sidebar = ({ isOpen, toggle }) => {
   const loggedIn = useSelector(state => state.user.loggedIn);
-  const user = useSelector((state) => state.user.user);
+  const user = useSelector(state => state.user.user);
   const booksCount = useSelector(state => state.catalog.books.length);
   const createdCount = useSelector(
-    state => state.catalog.books.filter(book => book.user_id === user.id)
-      .length
+    state => state.catalog.books.filter(
+      book => book.user_id === user.id,
+    )
+      .length,
   );
   const favoritedCount = useSelector(
-    state =>
-      state.catalog.books.filter(book =>
-        book.favorited_by.some(favorite => favorite.id === user.id)
-      ).length
+    state => state.catalog.books.filter(
+      book => book.favorited_by.some(favorite => favorite.id === user.id),
+    ).length,
   );
 
-  let history = useHistory();
+  const history = useHistory();
   const dispatch = useDispatch();
   const handleLogout = e => {
     e.preventDefault();
@@ -40,7 +41,7 @@ const Sidebar = ({ isOpen, toggle }) => {
   };
 
   const { name, nickname } = user;
-  
+
   return (
     <SidebarContainer isOpen={isOpen} onClick={toggle}>
       {loggedIn ? (
@@ -48,32 +49,44 @@ const Sidebar = ({ isOpen, toggle }) => {
           <SidebarProfile>
             <img
               src="http://unsplash.it/100/100?gravity=center"
-              alt="random image"
+              alt="random img"
               width="50"
               height="50"
             />
             <h3>{name}</h3>
-            <p>@{nickname}</p>
+            <p>
+              @
+              {nickname}
+            </p>
           </SidebarProfile>
 
           <SidebarMenu>
             <SidebarItem>
               <SidebarLink to="/dashboard">
-                Add book <PlusIcon />
+                Add book
+                {' '}
+                <PlusIcon />
               </SidebarLink>
             </SidebarItem>
             <SidebarItem>
               <SidebarLink to="/books">
-                Books <span>{booksCount}</span>
+                Books
+                {' '}
+                <span>{booksCount}</span>
               </SidebarLink>
             </SidebarItem>
             <SidebarItem>
               <SidebarLink to="/creations">
-                My books <span>{createdCount}</span>
+                My books
+                {' '}
+                <span>{createdCount}</span>
               </SidebarLink>
             </SidebarItem>
             <SidebarItem>
-              <SidebarLink to="/favorites">My favorites {favoritedCount}</SidebarLink>
+              <SidebarLink to="/favorites">
+                My favorites
+                {favoritedCount}
+              </SidebarLink>
             </SidebarItem>
             <SidebarItem>
               <SidebarLink to="/account">Account</SidebarLink>

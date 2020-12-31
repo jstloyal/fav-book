@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
 import { FaTrashAlt } from 'react-icons/fa';
 import { deleteBook } from '../../features/catalog/catalogSlice';
 
@@ -12,13 +13,13 @@ const DeleteButton = ({ id, userId }) => {
     state => state.catalog.errors.deleteBook,
   );
 
+  const history = useHistory();
   const dispatch = useDispatch();
   const handleDelete = e => {
     e.preventDefault();
-    const response = window.confirm(
-      'Are you sure you want to delete the book?'
-    );
+    const response = window.confirm('Are you sure you want to delete the book?');
     if (response) dispatch(deleteBook(id));
+    history.push('/');
   };
 
   return (

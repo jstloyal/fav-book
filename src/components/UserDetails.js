@@ -26,14 +26,23 @@ const UserDetails = () => {
             <li>
               <img
                 src="http://unsplash.it/100/100?gravity=center"
-                alt="random picture"
+                alt="random img"
                 width="100"
                 height="100"
               />
             </li>
-            <li>Name: {name}</li>
-            <li>Username: {nickname}</li>
-            <li>Email: {email}</li>
+            <li>
+              Name:
+              {name}
+            </li>
+            <li>
+              Username:
+              {nickname}
+            </li>
+            <li>
+              Email:
+              {email}
+            </li>
             <li className="logout">
               <a href="/" onClick={handleLogout}>
                 Logout

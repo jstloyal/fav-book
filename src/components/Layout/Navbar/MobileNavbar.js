@@ -11,11 +11,12 @@ import {
   SpecialLink,
   MobileIcon,
   DownloadLink,
-  ProfileAvatar,
 } from './NavElement';
 
-const MobileNavbar = ({ toggle, sidebarIsOpen, bookPage, title }) => {
-  const loggedIn = useSelector((state) => state.user.loggedIn);
+const MobileNavbar = ({
+  toggle, sidebarIsOpen, bookPage, title,
+}) => {
+  const loggedIn = useSelector(state => state.user.loggedIn);
   const bookName = useSelector(state => state.catalog.book.title);
   const [scrolled, setScrolled] = useState(false);
   const history = useHistory();
@@ -36,7 +37,7 @@ const MobileNavbar = ({ toggle, sidebarIsOpen, bookPage, title }) => {
 
   return (
     <>
-      <Nav sidebarIsOpen={sidebarIsOpen} scrolled={scrolled} mobileView={true}>
+      <Nav sidebarIsOpen={sidebarIsOpen} scrolled={scrolled} mobileView>
         <NavContainer>
           {bookPage ? (
             <MobileIcon onClick={goBack}>
@@ -58,19 +59,6 @@ const MobileNavbar = ({ toggle, sidebarIsOpen, bookPage, title }) => {
               <>
                 <li>
                   <DownloadLink to="/">Home</DownloadLink>
-                </li>
-                <li>
-                  <NavLink to="/books">Books</NavLink>
-                </li>
-                <li>
-                  <ProfileAvatar onClick={toggle}>
-                    <img
-                      src="http://unsplash.it/30/30?gravity=center"
-                      alt="random img"
-                      width="30"
-                      height="30"
-                    />
-                  </ProfileAvatar>
                 </li>
               </>
             ) : (
@@ -98,8 +86,8 @@ const MobileNavbar = ({ toggle, sidebarIsOpen, bookPage, title }) => {
 MobileNavbar.propTypes = {
   toggle: PropTypes.func.isRequired,
   sidebarIsOpen: PropTypes.bool.isRequired,
-  bookPage: PropTypes.bool,
-  title: PropTypes.string,
+  bookPage: PropTypes.bool.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default MobileNavbar;

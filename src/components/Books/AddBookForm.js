@@ -8,9 +8,11 @@ const AddBookForm = () => {
   const user = useSelector(state => state.user.user);
   const loading = useSelector(state => state.catalog.loaders.addBook);
   const error = useSelector(state => state.catalog.errors.addBook);
-  
+
   const dispatch = useDispatch();
-  const { register, handleSubmit, reset, errors } = useForm();
+  const {
+    register, handleSubmit, reset, errors,
+  } = useForm();
 
   const onSubmit = data => {
     const formData = new FormData();

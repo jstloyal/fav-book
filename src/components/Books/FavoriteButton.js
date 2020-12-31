@@ -10,6 +10,9 @@ const FavoriteButton = ({ id, favoritedBy }) => {
   );
   const favoriteError = useSelector(state => state.catalog.errors.favorite);
 
+  const isFavorited = favoritedBy.some(user => user.id === currentUser.id);
+  const type = isFavorited ? 'unfavorite' : 'favorite';
+
   const dispatch = useDispatch();
   const handleFavorite = e => {
     e.preventDefault();
@@ -17,9 +20,6 @@ const FavoriteButton = ({ id, favoritedBy }) => {
       id, type, currentUser,
     }));
   };
-
-  const isFavorited = favoritedBy.some((user) => user.id === currentUser.id);
-  const type = isFavorited ? 'unfavorite' : 'favorite';
 
   return (
     <>

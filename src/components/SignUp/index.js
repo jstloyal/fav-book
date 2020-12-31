@@ -1,5 +1,5 @@
 import SignUpForm from './SignUpForm';
-import { Container, StyledLink } from '../Styles.styled.js';
+import { Container, StyledLink } from '../Styles.styled';
 
 const SignUp = () => (
   <Container>

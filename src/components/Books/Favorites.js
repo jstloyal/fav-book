@@ -7,14 +7,14 @@ import { MobileContainer } from '../Styles.styled';
 
 const Books = () => {
   const books = useSelector(state => state.catalog.books);
-  
+
   const dispatch = useDispatch();
   useEffect(() => {
     if (books.length === 0) dispatch(getBooks());
   }, [dispatch, books]);
 
   return (
-    <MobileLayout title={'My favorites'} bookPage={false}>
+    <MobileLayout title="My favorites" bookPage={false}>
       <MobileContainer>
         <UserFavorites />
       </MobileContainer>

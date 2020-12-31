@@ -46,7 +46,7 @@ export const favorite = createAsyncThunk(
   }) => {
     const { header: headers } = JSON.parse(localStorage.getItem('currentUser'));
     await axios.put(`${baseUrl}/${id}/favorite`, { type }, { headers });
-    
+
     return { id, type, currentUser };
   },
 );
@@ -60,14 +60,14 @@ export const catalogSlice = createSlice({
     filters: {},
     book: { user: {}, favorited_by: [] },
   },
-  reducers: {
-    decrement: state => {
-      state.value -= 1;
-    },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload;
-    },
-  },
+  // reducers: {
+  //   decrement: state => {
+  //     state.value -= 1;
+  //   },
+  //   incrementByAmount: (state, action) => {
+  //     state.value += action.payload;
+  //   },
+  // },
   extraReducers: {
     [getBooks.pending]: state => {
       state.loaders.loadingBooks = true;
@@ -132,20 +132,21 @@ export const catalogSlice = createSlice({
       const { id, type, currentUser } = action.payload;
       state.books.map(book => {
         if (book.id === id) {
-          type === 'favorite'
-            ? book.favorited_by.push(currentUser)
-            : (book.favorited_by = book.favorited_by.filter(
-              favorite => favorite.id !== currentUser.id
-              ));
+          if (type === 'favorite') {
+            book.favorited_by.push(currentUser);
+            state.book.favorited_by.push(currentUser);
+          } else {
+            book.favorited_by = book.favorited_by.filter(
+              favorite => favorite.id !== currentUser.id,
+            );
+            state.book.favorited_by = state.book.favorited_by.filter(
+              favorite => favorite.id !== currentUser.id,
+            );
+          }
           return book;
         }
         return book;
       });
-      type === 'favorite'
-        ? state.book.favorited_by.push(currentUser)
-        : (state.book.favorited_by = state.book.favorited_by.filter(
-          favorite => favorite.id !== currentUser.id
-        ));
       state.loaders.favorite = false;
       state.errors.favorite = false;
     },

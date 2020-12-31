@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import MobileNavbar from './Navbar/MobileNavbar';
@@ -8,7 +7,7 @@ import { MainContainer } from '../Styles.styled';
 const MobileLayout = ({ children, bookPage, title }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggle = () => setIsOpen((isOpen) => !isOpen);
+  const toggle = () => setIsOpen(isOpen => !isOpen);
 
   return (
     <>
@@ -27,8 +26,12 @@ const MobileLayout = ({ children, bookPage, title }) => {
 };
 
 MobileLayout.propTypes = {
-  bookPage: PropTypes.bool,
-  title: PropTypes.string,
+  bookPage: PropTypes.bool.isRequired,
+  title: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
 };
 
 export default MobileLayout;

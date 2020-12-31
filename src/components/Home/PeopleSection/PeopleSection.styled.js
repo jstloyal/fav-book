@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.section`
+const Container = styled.section`
   padding: 60px 5px;
   text-align: center;
 
@@ -78,3 +78,5 @@ export const Container = styled.section`
     }
   }
 `;
+
+export default Container;

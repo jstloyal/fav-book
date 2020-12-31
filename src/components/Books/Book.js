@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ReactStars from 'react-rating-stars-component';
-import { BookContainer } from './Styles.styled.js';
+import { BookContainer } from './Styles.styled';
 import DeleteButton from './DeleteButton';
 
 const Book = ({ book }) => {
@@ -14,7 +14,7 @@ const Book = ({ book }) => {
     image_url: imageUrl,
     ratings,
   } = book;
-  const rating = ratings ? ratings : Math.floor(Math.random() * Math.floor(6));
+  const rating = ratings || Math.floor(Math.random() * Math.floor(6));
 
   return (
     <BookContainer>
@@ -30,7 +30,7 @@ const Book = ({ book }) => {
             <ReactStars
               count={5}
               value={rating}
-              isHalf={true}
+              isHalf
               edit={false}
               size={20}
               activeColor="#ffd700"
@@ -38,8 +38,14 @@ const Book = ({ book }) => {
           </div>
 
           <div>
-            <p>Genre: {genre}</p>
-            <p>Author: {author}</p>
+            <p>
+              Genre:
+              {genre}
+            </p>
+            <p>
+              Author:
+              {author}
+            </p>
           </div>
         </div>
       </Link>

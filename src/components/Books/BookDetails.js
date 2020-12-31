@@ -6,7 +6,7 @@ const BookDetails = ({ match }) => {
   const { id } = match.params;
 
   return (
-    <MobileLayout bookPage={true}>
+    <MobileLayout bookPage>
       <ShowBook id={id} />
     </MobileLayout>
   );
