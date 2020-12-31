@@ -13,7 +13,7 @@ const AllBooks = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    if (books.length === 0) dispatch(getBooks());
+    dispatch(getBooks());
   }, [dispatch, books]);
 
   const myBooks = [...books].map(book => (
@@ -25,7 +25,7 @@ const AllBooks = () => {
       {loading ? <Loading /> : null}
       {error ? <Error errors={error} /> : null}
       <div className="slider">
-        {myBooks.length === 0 && !loading && !error ? (
+        {myBooks.length === 0 ? (
           <p className="text-center">No books in the database</p>
         ) : (
           myBooks
