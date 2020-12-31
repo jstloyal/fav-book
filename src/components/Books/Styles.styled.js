@@ -138,6 +138,7 @@ export const ShowBookContainer = styled.section`
 
       p {
         margin-right: 10px;
+        font-size: 0.75rem;
       }
 
       button {
@@ -183,28 +184,26 @@ export const ShowBookContainer = styled.section`
         }
 
         h3 {
-          margin-bottom: -5px;
-          font-size: 0.875rem;
-        }
-
-        p {
+          margin-bottom: -10px;
           font-size: 0.75rem;
-
-          &:first-child {
-            font-size: 0.875rem;
-            font-weight: bold;
-          }
         }
+      }
+    }
+
+    .price {
+      > * {
+        font-size: 0.75rem;
+      }
+
+      & > :first-child {
+        margin-bottom: -5px;
+        font-size: 0.875rem;
       }
     }
   }
 
   .description {
     padding: 15px 30px;
-
-    h3 {
-      margin-bottom: 10px;
-    }
 
     .date {
       text-align: right;
@@ -228,11 +227,11 @@ export const ShowBookContainer = styled.section`
 `;
 
 export const FavoriteIcon = styled(FaRegHeart)`
-  font-size: 2rem;
+  font-size: 1.5rem;
 `;
 
 export const UnfavoriteIcon = styled(FaHeart)`
-  font-size: 2rem;
+  font-size: 1.5rem;
 `;
 
 export const Button = styled(Link)`

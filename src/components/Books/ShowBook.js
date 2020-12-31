@@ -44,7 +44,7 @@ const ShowBook = ({ id }) => {
           {currentUser.id ? (
             <div className="likes">
               <p>
-                Likes
+                Likes &nbsp;
                 {favoritedBy.length}
               </p>
               <FavoriteButton className="favorite" id={+id} favoritedBy={favoritedBy} />
@@ -74,7 +74,7 @@ const ShowBook = ({ id }) => {
               </div>
             </div>
 
-            <div>
+            <div className="price">
               <p>
                 Author:
                 {author}
