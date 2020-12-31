@@ -17,9 +17,9 @@ const HeroSection = () => (
     </HeroBg>
     <HeroContent>
       <div className="hero-header">
-        <h1>Make your family time count</h1>
+        <h1>Make your free time count</h1>
         <p>
-          You can generate income from your hobbies and we will show you how
+          You can add your favorite book list and view others favorite book lists
         </p>
       </div>
       <div className="actions">

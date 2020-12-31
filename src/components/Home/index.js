@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import HeroSection from './HeroSection';
-import DashboardSection from './DashboardSection';
-import DesignerSection from './DesignerSection';
-import PeopleSection from './PeopleSection';
-import StartFreeSection from './StartFreeSection';
+// import DashboardSection from './DashboardSection';
+// import DesignerSection from './DesignerSection';
+// import PeopleSection from './PeopleSection';
+// import StartFreeSection from './StartFreeSection';
 import Layout from '../Layout';
 import { getBooks } from '../../features/catalog/catalogSlice';
 
@@ -18,10 +18,6 @@ const Home = () => {
   return (
     <Layout>
       <HeroSection />
-      <DashboardSection />
-      <DesignerSection />
-      <PeopleSection />
-      <StartFreeSection />
     </Layout>
   );
 };

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import {
   Nav,
   NavContainer,
-  NavMenu,
+  MobileNavMenu,
   NavLink,
   SpecialLink,
   MobileIcon,
@@ -54,7 +54,7 @@ const MobileNavbar = ({
             <FaSearch />
           </MobileIcon>
 
-          <NavMenu>
+          <MobileNavMenu>
             {loggedIn ? (
               <>
                 <li>
@@ -76,7 +76,7 @@ const MobileNavbar = ({
                 </li>
               </>
             )}
-          </NavMenu>
+          </MobileNavMenu>
         </NavContainer>
       </Nav>
     </>

@@ -10,11 +10,11 @@ const Footer = () => (
     </Logo>
 
     <address>
-      Lafayette Ave 156, Brooklyn, NY, USA
+      Obafemi Awolowo Way 156, Ikeja, LA, Nigeria
       <br />
       35 St ANdrew&apos;s St, Cambridge CB2 3AR, Grat Britain
       <br />
-      + 347 853 106 681
+      + 234 8168 090 727
     </address>
 
     <ul>
@@ -29,7 +29,7 @@ const Footer = () => (
       </li>
     </ul>
 
-    <p>Crafts 2020, All rights reserved</p>
+    <p>FavBooks 2020, All rights reserved</p>
   </Container>
 );
 

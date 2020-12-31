@@ -60,14 +60,6 @@ export const catalogSlice = createSlice({
     filters: {},
     book: { user: {}, favorited_by: [] },
   },
-  // reducers: {
-  //   decrement: state => {
-  //     state.value -= 1;
-  //   },
-  //   incrementByAmount: (state, action) => {
-  //     state.value += action.payload;
-  //   },
-  // },
   extraReducers: {
     [getBooks.pending]: state => {
       state.loaders.loadingBooks = true;
@@ -157,5 +149,4 @@ export const catalogSlice = createSlice({
   },
 });
 
-export const { decrement, incrementByAmount } = catalogSlice.actions;
 export default catalogSlice.reducer;

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+/* eslint-disable */
 export const Nav = styled.nav`
   position: fixed;
   width: 100%;
@@ -35,11 +36,23 @@ export const NavLogo = styled(Link)`
 `;
 
 export const NavMenu = styled.ul`
-  /* display: flex; */
+  display: flex;
   align-items: center;
   text-align: center;
-  display: none;
 
+  li.lg-screen {
+    display: none;
+
+    @media screen and (min-width: 600px) {
+      display: block;
+    }
+  }
+`;
+
+export const MobileNavMenu = styled.ul`
+  display: none;
+  align-items: center;
+  text-align: center;
   @media screen and (min-width: 768px) {
     display: flex;
   }
@@ -48,13 +61,13 @@ export const NavMenu = styled.ul`
 export const NavLink = styled(Link)`
   display: flex;
   align-items: center;
-  color: #fff;
+  color: inherit;
   padding: 0 0.6rem;
   font-size: 0.825rem;
 `;
 
 export const DownloadLink = styled(NavLink)`
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     display: none;
   }
 `;
@@ -75,7 +88,9 @@ export const MobileIcon = styled.div`
   cursor: pointer;
 
   @media screen and (min-width: 768px) {
-    display: none;
+    &.search {
+      display: none;
+    }
   }
 `;
 
