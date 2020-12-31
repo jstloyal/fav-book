@@ -5,12 +5,12 @@ import { getBooks } from '../../features/catalog/catalogSlice';
 
 const FavoritedBooks = () => {
   const books = useSelector(state => state.catalog.books);
-  
+
   const dispatch = useDispatch();
   useEffect(() => {
     if (books.length === 0) dispatch(getBooks());
   }, [dispatch, books]);
-  
+
   const myBooks = [...books]
     .sort((bookA, bookB) => bookB.favorited_by.length - bookA.favorited_by.length)
     .slice(0, 4)

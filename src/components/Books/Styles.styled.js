@@ -68,9 +68,14 @@ export const BookContainer = styled.article`
         outline: none;
         cursor: pointer;
 
+        &:hover {
+          transform: scale(1.1);
+        }
+
         & > :first-child {
           font-size: 1.5rem;
           color: red;
+          text-shadow: 3px 4px 7px rgba(81, 67, 21, 0.8);
         }
       }
     }
@@ -94,6 +99,10 @@ export const BookContainer = styled.article`
         font-size: 0.875rem;
         font-weight: bold;
       }
+    }
+
+    & > :last-child {
+      text-align: right;
     }
   }
 `;

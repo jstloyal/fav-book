@@ -8,6 +8,7 @@ import { ShowBookContainer } from './Styles.styled';
 import Loading from '../Loading';
 import Error from '../Error';
 import formatDate from '../../utils/date';
+import DeleteButton from './DeleteButton';
 
 const ShowBook = ({ id }) => {
   const currentUser = useSelector(state => state.user.user);
@@ -24,6 +25,7 @@ const ShowBook = ({ id }) => {
     updated_at: updatedAt,
     user_name: userName,
     ratings,
+    user_id: userId,
   } = book;
   const rating = ratings || Math.floor(Math.random() * Math.floor(6));
 
@@ -42,13 +44,16 @@ const ShowBook = ({ id }) => {
       <>
         <div className="image">
           {currentUser.id ? (
-            <div className="likes">
-              <p>
-                Likes &nbsp;
-                {favoritedBy.length}
-              </p>
-              <FavoriteButton className="favorite" id={+id} favoritedBy={favoritedBy} />
-            </div>
+            <>
+              <DeleteButton userId={userId} id={+id} />
+              <div className="likes">
+                <p>
+                  Likes &nbsp;
+                  {favoritedBy.length}
+                </p>
+                <FavoriteButton className="favorite" id={+id} favoritedBy={favoritedBy} />
+              </div>
+            </>
           ) : null}
           <img src={imageUrl} alt="Book" />
 

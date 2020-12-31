@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { FaArrowLeft, FaBars, FaSearch } from 'react-icons/fa';
@@ -21,14 +21,19 @@ const MobileNavbar = ({
   const [scrolled, setScrolled] = useState(false);
   const history = useHistory();
 
-  document.addEventListener('scroll', () => {
-    const scrolledY = document.scrollingElement.scrollTop;
-    if (scrolledY > 80 && !scrolled) {
-      setScrolled(true);
-    } else if (scrolledY < 80 && scrolled) {
-      setScrolled(false);
-    }
-  });
+  useEffect(() => {
+    const scrollEvent = document.addEventListener('scroll', () => {
+      const scrolledY = document.scrollingElement.scrollTop;
+      if (scrolledY > 80 && !scrolled) {
+        setScrolled(true);
+      } else if (scrolledY < 80 && scrolled) {
+        setScrolled(false);
+      }
+    });
+    return () => {
+      document.removeEventListener('scroll', scrollEvent);
+    };
+  }, [scrolled]);
 
   const goBack = e => {
     e.preventDefault();

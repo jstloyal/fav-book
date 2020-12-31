@@ -10,10 +10,7 @@ const LoginForm = () => {
 
   const dispatch = useDispatch();
   const {
-    register,
-    handleSubmit,
-    errors,
-    reset,
+    register, handleSubmit, errors, reset,
   } = useForm();
   const onSubmit = data => {
     dispatch(login(data));
@@ -26,6 +23,7 @@ const LoginForm = () => {
         <input
           name="email"
           placeholder="Email"
+          defaultValue="demoUser@mail.com"
           ref={register({
             required: {
               value: true,
@@ -48,6 +46,7 @@ const LoginForm = () => {
           type="password"
           name="password"
           placeholder="Password"
+          defaultValue="123456"
           ref={register({
             required: {
               value: true,
