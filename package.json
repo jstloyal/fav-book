@@ -9,7 +9,6 @@
     "@testing-library/user-event": "^12.1.10",
     "activestorage": "^5.2.4-4",
     "axios": "^0.21.1",
-    "events": "^3.2.0",
     "express": "^4.17.1",
     "history": "^5.0.0",
     "moment": "^2.29.1",
