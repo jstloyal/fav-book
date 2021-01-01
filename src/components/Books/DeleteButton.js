@@ -1,17 +1,13 @@
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import { FaTrashAlt } from 'react-icons/fa';
+import { FaTimes } from 'react-icons/fa';
 import { deleteBook } from '../../features/catalog/catalogSlice';
 
 const DeleteButton = ({ id, userId }) => {
   const currentUser = useSelector(state => state.user.user);
-  const deleteLoading = useSelector(
-    state => state.catalog.loaders.deleteBook,
-  );
-  const deleteError = useSelector(
-    state => state.catalog.errors.deleteBook,
-  );
+  const deleteLoading = useSelector(state => state.catalog.loaders.deleteBook);
+  const deleteError = useSelector(state => state.catalog.errors.deleteBook,);
 
   const history = useHistory();
   const dispatch = useDispatch();
@@ -32,7 +28,7 @@ const DeleteButton = ({ id, userId }) => {
             onClick={handleDelete}
             disabled={deleteLoading && deleteLoading === id}
           >
-            <FaTrashAlt />
+            <FaTimes />
           </button>
         </div>
       ) : null}

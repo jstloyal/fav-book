@@ -53,7 +53,7 @@ const Book = ({ book }) => {
             />
           </div>
 
-          <div>
+          <div className="flex-right">
             <p>
               Genre:
               {`${genre}`}
