@@ -45,7 +45,7 @@ const ShowBook = ({ id }) => {
         <div className="image">
           {currentUser.id ? (
             <>
-              <DeleteButton userId={userId} id={+id} />
+              {loading || error ? null : <DeleteButton userId={userId} id={+id} />}
               <div className="likes">
                 <p>
                   Likes &nbsp;

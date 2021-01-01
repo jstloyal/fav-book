@@ -28,7 +28,7 @@ const Book = ({ book }) => {
           <DeleteButton userId={userId} id={id} />
           {currentUser.id ? (
             <>
-              <DeleteButton userId={userId} id={id} />
+              <DeleteButton userId={userId} id={+id} />
               <div className="likes">
                 <p>
                   Likes &nbsp;
