@@ -85,7 +85,7 @@ const Sidebar = ({ isOpen, toggle }) => {
             <SidebarItem>
               <SidebarLink to="/favorites">
                 My favorites
-                {favoritedCount}
+                <span>{favoritedCount}</span>
               </SidebarLink>
             </SidebarItem>
             <SidebarItem>

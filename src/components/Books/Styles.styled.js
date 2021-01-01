@@ -12,7 +12,7 @@ export const BooksContainer = styled.section`
     grid-column: 2 / -2;
   }
 
-  & > .full {
+  & > .slider {
     grid-column: 1 / -1;
   }
 

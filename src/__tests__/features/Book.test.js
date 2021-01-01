@@ -12,21 +12,6 @@ describe('Book page', () => {
     cleanup();
   });
 
-  test('has a loading text on initial render', async () => {
-    const history = createMemoryHistory();
-    history.push('/books/50');
-
-    const { getByText } = render(
-      <Provider store={store}>
-        <Router history={history}>
-          <App />
-        </Router>
-      </Provider>,
-    );
-
-    expect(getByText(/loading/i)).toBeTruthy();
-  });
-
   test('display a book image, usage and contact button', async () => {
     const history = createMemoryHistory();
     history.push('/books/50');

@@ -100,6 +100,7 @@ const ShowBook = ({ id }) => {
             {updatedDate !== createdDate ? `Updated ${updatedDate}` : `Added ${createdDate}`}
           </p>
         </div>
+        <a href="mailto:example@example.com">Contact uploader</a>
       </>
     </ShowBookContainer>
   );

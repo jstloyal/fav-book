@@ -2,8 +2,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const baseUrl = 'https://favbooks-api.herokuapp.com/books';
-// const baseUrl = 'http://localhost/books';
+// const baseUrl = 'https://favbooks-api.herokuapp.com/books';
+const baseUrl = 'http://localhost:3000/books';
 
 export const getBooks = createAsyncThunk('catalog/getBooks', async () => {
   const response = await axios.get(baseUrl);

@@ -23,6 +23,7 @@ export const NavContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: auto;
   padding: 0 0.625rem;
   z-index: 1;
 `;

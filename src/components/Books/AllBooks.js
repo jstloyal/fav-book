@@ -25,7 +25,7 @@ const AllBooks = () => {
       {loading ? <Loading /> : null}
       {error ? <Error errors={error} /> : null}
       <div className="slider">
-        {myBooks.length === 0 ? (
+        {myBooks.length === 0 && !loading && !error ? (
           <p className="text-center">No books in the database</p>
         ) : (
           myBooks

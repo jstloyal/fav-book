@@ -32,15 +32,15 @@ const UserDetails = () => {
               />
             </li>
             <li>
-              Name:
+              Name: &nbsp;
               {`${name}`}
             </li>
             <li>
-              Username:
+              Username: &nbsp;
               {`${nickname}`}
             </li>
             <li>
-              Email:
+              Email: &nbsp;
               {`${email}`}
             </li>
             <li className="logout">
