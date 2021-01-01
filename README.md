@@ -1,70 +1,116 @@
-# Getting Started with Create React App
+![Hireable](https://img.shields.io/badge/Hireable-yes-success) ![](https://img.shields.io/badge/Mobile--responsive-yes-green) ![](https://img.shields.io/badge/-Microverse%20projects-blueviolet)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Fav-Book
 
-## Available Scripts
+<!--
+*** Thanks for checking out this README Template. If you have a suggestion that would
+*** make this better, please fork the repo and create a pull request or simply open
+*** an issue with the tag "enhancement".
+*** Thanks again! Now go create something AMAZING! :D
+-->
 
-In the project directory, you can run:
+<!-- TABLE OF CONTENTS -->
 
-### `yarn start`
+## Table of Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [About the Project](#about-the-project)
+- [Contributors](#contributors)
+- [Acknowledgements](#acknowledgements)
+- [License](#license)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### About the Project
 
-### `yarn test`
+> The <b>Fav-Books</b> mobile web app presents the world's finest Favorite Books from all around the world. All users can create an account and add their favorite books, view/like other user's favorite books.
+> <br>
+> The APP is created with the latest industry standards using React.js and Redux Toolkit
+> <br>
+> API Backend used for data manipulation: [Rails FavBook-Api Backend](https://favbooks-api.herokuapp.com/) <br>
+> The app is fully mobile responsive and tested using Jest and the React Testing Library.
+> <br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## App functionality
 
-### `yarn build`
+- Guests and users can view a catalog of books added by users.
+- Logged in users can like/favorite books, this will automatically add the books to the favorite list and increase the like count for the book.
+- Users can click on a book to be routed to the book show page where they can see extra details.
+- All the data manipulation and login system is handled by a Rails Backend API
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<p align="center">
+    <img src="src/assets/fav-book.png" alt="project-image" >
+</p>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Live Link (Heroku)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+[Project live link](https://favbook-view.herokuapp.com/)
 
-### `yarn eject`
+### Built With
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+This project was built using these technologies.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- React.js
+- Redux Toolkit
+- Axios
+- devise_token_auth for login funtionality
+- GitHub
+- Heroku
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Testing
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Jest
+- React Testing Library
 
-## Learn More
+## Getting Started
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**To get this project set up on your local machine, follow these simple steps:**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Step 1**<br>
+Navigate through the local folder where you want to clone the repository and run<br>
+`git clone https://github.com/jstloyal/fav-book`. It will clone the repo to your local folder.<br>
+**Step 2**<br>
+Run `cd 
+fav-book `<br>
+**Step 3**<br>
+Run `npm install` to install the npm packages from the `package.json` file.<br>
+**Step 4**<br>
+Run `npm start` to start the webpack server, you can now navigate to `http://localhost:3000` to view the app. The server refreshes the app every time you make a change to a file used by it.<br>
+**Step 5**<br>
+Most important, enjoy the app!<br>
 
-### Code Splitting
+## Tests
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. Open Terminal
 
-### Analyzing the Bundle Size
+2. Install dependencies (only if you did not install them previously):
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+   `npm install`
 
-### Making a Progressive Web App
+3. Run the tests with the command:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   `npm test`
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Contributors
 
-### Deployment
+**Author**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+​**Adetayo Sunkanmi**
 
-### `yarn build` fails to minify
+- Github: [jstloyal](https://github.com/jstloyal)
+- Twitter: [@jstloyalty](https://twitter.com/jstloyalty)
+- Linkedin: [Adetayo Sunkanmi](https://www.linkedin.com/in/jstloyalty)
+- E-mail: jstloyalty@gmail.com
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<!-- ACKNOWLEDGEMENTS -->
+
+## Acknowledgements
+
+- [Microverse](https://www.microverse.org/)
+
+## License
+
+📝
+This project is [MIT](https://opensource.org/licenses/MIT) licensed.
+
+## Show your support
+
+If you've read this far....give us a ⭐️!
