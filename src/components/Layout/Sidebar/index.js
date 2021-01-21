@@ -20,17 +20,18 @@ const Sidebar = ({ isOpen, toggle }) => {
   const loggedIn = useSelector(state => state.user.loggedIn);
   const user = useSelector(state => state.user.user);
   const booksCount = useSelector(state => state.catalog.books.length);
+
+  console.log(booksCount);
   const createdCount = useSelector(
-    state => state.catalog.books.filter(
-      book => book.user_id === user.id,
-    )
-      .length,
+    state => state.catalog.books.filter(book => book.user_id === user.id).length,
   );
-  const favoritedCount = useSelector(
-    state => state.catalog.books.filter(
-      book => book.favorited_by.some(favorite => favorite.id === user.id),
-    ).length,
+
+  const favorited = useSelector(
+    state => state.catalog.books.filter(book => book.favorited_by
+      .some(favorite => favorite.id === user.id)),
   );
+
+  const favoritedCount = favorited.length;
 
   const history = useHistory();
   const dispatch = useDispatch();

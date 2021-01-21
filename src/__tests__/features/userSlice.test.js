@@ -6,6 +6,7 @@ import store from '../../app/store';
 import App from '../../App';
 import { login, logout } from '../../features/user/userSlice';
 
+jest.setTimeout(20000);
 afterEach(() => {
   cleanup();
 });

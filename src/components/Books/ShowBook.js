@@ -20,7 +20,7 @@ const ShowBook = ({ id }) => {
     author,
     genre,
     image_url: imageUrl,
-    favorite_by: favoritedBy,
+    favorited_by: favoritedBy,
     created_at: createdAt,
     updated_at: updatedAt,
     user_name: userName,

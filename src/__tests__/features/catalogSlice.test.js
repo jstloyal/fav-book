@@ -7,6 +7,7 @@ import store from '../../app/store';
 import App from '../../App';
 import { getBooks, getBook } from '../../features/catalog/catalogSlice';
 
+jest.setTimeout(20000);
 afterEach(() => {
   cleanup();
 });
