@@ -21,7 +21,6 @@ const Sidebar = ({ isOpen, toggle }) => {
   const user = useSelector(state => state.user.user);
   const booksCount = useSelector(state => state.catalog.books.length);
 
-  console.log(booksCount);
   const createdCount = useSelector(
     state => state.catalog.books.filter(book => book.user_id === user.id).length,
   );
